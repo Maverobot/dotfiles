@@ -155,3 +155,9 @@ bar {
         status_command i3status
         tray_output primary
 }
+
+# Keybinding for locking screen
+bindsym $MOD+SHIFT+x exec i3lock -c 000000
+
+# Automatically lock the screen after 10 minutes
+exec --no-startup-id xautolock -time 10 -locker 'i3lock -d -c 000000'
