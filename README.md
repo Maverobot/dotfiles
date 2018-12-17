@@ -5,5 +5,5 @@ This is my personal dotfiles, which contains configurations of:
 # i3wm
 To install the i3 window manager:
 ```
-sudo apt install i3-wm i3status suckless-tools
+sudo apt install i3-wm i3status i3lock xautolock suckless-tools
 ```
