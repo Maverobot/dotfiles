@@ -16,14 +16,14 @@ To install the i3 window manager:
 sudo apt install i3-wm i3status i3lock xautolock suckless-tools
 
 # Create soft link in ~/.config
-ln -s ~/.dotfiles/.config/i3 ~/.config/i3
+ln -s ~/.dotfiles/.config/i3 ~/.config/
 ```
 
 ## Emacs as Daemon
 To configure emacs as a daemon which runs at startup:
 ```
 # Create soft link in ~/.config
-ln -s ~/.dotfiles/.config/systemd ~/.config/systemd
+ln -s ~/.dotfiles/.config/systemd ~/.config/
 
 # Enable the service
 systemctl enable --user emacs
