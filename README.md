@@ -33,5 +33,5 @@ systemctl start --user emacs
 echo "alias ev='emacsclient -t'" >> ~/.bash_aliases
 
 # Setup emacsclient (gui) with alias: em (short for emacs, gui-style) 
-echo "alias em='emacsclient -c > /dev/null &'" >> ~/.bash_aliases
+echo "alias em='emacsclient -nc'" >> ~/.bash_aliases
 ```
