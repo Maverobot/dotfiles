@@ -14,6 +14,7 @@ To install the i3 window manager:
 ```
 # Install dependencies
 sudo apt install i3-wm i3status i3lock xautolock suckless-tools
+
 # Create soft link in ~/.config
 ln -s ~/.dotfiles/.config/i3 ~/.config/i3
 ```
