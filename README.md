@@ -28,4 +28,7 @@ ln -s ~/.dotfiles/.config/systemd ~/.config/systemd
 # Enable the service
 systemctl enable --user emacs
 systemctl start --user emacs
+
+# Setup emacsclient with alias: ev (short for evil) 
+echo "alias ev='emacsclient -t'" >> ~/.bash_aliases
 ```
