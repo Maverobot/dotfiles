@@ -179,3 +179,6 @@ bindsym $mod+minus scratchpad show
 
 # Show the sup-mail scratchpad window, if any.
 bindsym mod4+s [title="^Sup ::"] scratchpad show
+
+# #---Function Buttons---# #
+bindsym $mod+F8 exec --no-startup-id displayselect
