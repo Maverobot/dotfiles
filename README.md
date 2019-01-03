@@ -35,3 +35,12 @@ echo "alias vi='emacsclient -t'" >> ~/.bash_aliases
 # Setup emacsclient (gui) with alias: emacs (for emacs, gui-style) 
 echo "alias emacs='emacsclient -nc'" >> ~/.bash_aliases
 ```
+
+## Install scripts
+```
+# Create soft link ~/.scripts
+ln -s ~/.dotfiles/.scripts ~/.scripts
+
+# Add ~/.scripts to $PATH
+echo 'PATH="$PATH:$HOME/.scripts"' >> ~/.profile
+```
