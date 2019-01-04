@@ -180,5 +180,11 @@ bindsym $mod+minus scratchpad show
 # Show the sup-mail scratchpad window, if any.
 bindsym mod4+s [title="^Sup ::"] scratchpad show
 
+# Window resize management
+bindsym $mod+Shift+u   exec --no-startup-id i3resize left
+bindsym $mod+Shift+i   exec --no-startup-id i3resize down
+bindsym $mod+Shift+o   exec --no-startup-id i3resize up
+bindsym $mod+Shift+p   exec --no-startup-id i3resize right
+
 # #---Function Buttons---# #
 bindsym $mod+F8 exec --no-startup-id displayselect
