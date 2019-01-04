@@ -13,7 +13,7 @@ git clone https://github.com/Maverobot/dotfiles.git ~/.dotfiles
 To install the i3 window manager:
 ```
 # Install dependencies
-sudo apt install i3-wm i3status i3lock xautolock suckless-tools
+sudo apt install i3-wm i3status i3lock xautolock suckless-tools arandr
 
 # Create soft link in ~/.config
 ln -s ~/.dotfiles/.config/i3 ~/.config/
