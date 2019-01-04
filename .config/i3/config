@@ -186,5 +186,11 @@ bindsym $mod+Shift+i   exec --no-startup-id i3resize down
 bindsym $mod+Shift+o   exec --no-startup-id i3resize up
 bindsym $mod+Shift+p   exec --no-startup-id i3resize right
 
+# Starts dunst for notifications:
+exec --no-startup-id dunst
+
+# Clipboard
+bindsym $mod+Insert		exec --no-startup-id showclip
+
 # #---Function Buttons---# #
 bindsym $mod+F8 exec --no-startup-id displayselect
