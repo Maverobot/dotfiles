@@ -21,7 +21,7 @@ fi
 
 # Install i3wm dependencies
 echo ""
-sudo apt install i3-wm i3status i3lock xautolock suckless-tools arandr dunst
+sudo apt install i3-wm i3status i3lock xautolock suckless-tools arandr dunst terminator
 
 # #---Install i3wm config---# #
 if [ ! -d $(eval echo "~/.config") ]; then
