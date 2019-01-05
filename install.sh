@@ -66,13 +66,15 @@ fi
 
 # #---Install scripts---# #
 if [ ! -d $(eval echo "~/.scripts") ]; then
-    ln -s ~/.dotfiles/.scripts ~/.scripts/
+    ln -s ~/.dotfiles/.scripts ~/.scripts
+    echo 'PATH="$PATH:$HOME/.scripts"' >> ~/.profile
     echo -e "\nThe .scripts folder has been added!"
 else
     echo -e "\nThe .scripts folder already exists under ~/. Do you want to overwrite it?"
     case "$(confirm)" in
         "yes" ) rm ~/.scripts;
-                ln -s ~/.dotfiles/.scripts ~/.scripts/;
+                ln -s ~/.dotfiles/.scripts ~/.scripts;
+                echo 'PATH="$PATH:$HOME/.scripts"' >> ~/.profile
                 echo "The existing .scripts folder is overwritten.";;
         "no" ) echo "The existing .scripts folder is left untouched";;
     esac
