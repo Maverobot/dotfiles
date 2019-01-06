@@ -1,5 +1,17 @@
 #!/usr/bin/env bash
 
+# Prevent redundantly echong to a file
+echo_safe() {
+    if [ $# -ne 2 ]; then
+        echo "Wrong input of function ${FUNCNAME[0]}"
+        return
+    fi
+    if grep -Fxq $1 $(eval echo $2) &>/dev/null; then
+        return
+    fi
+    echo $1 >> $2
+}
+
 # Get user confirmation in console
 confirm() {
     while [ 1 ]; do
@@ -67,14 +79,14 @@ fi
 # #---Install scripts---# #
 if [ ! -d $(eval echo "~/.scripts") ]; then
     ln -s ~/.dotfiles/.scripts ~/.scripts
-    echo 'PATH="$PATH:$HOME/.scripts"' >> ~/.profile
+    echo_safe 'PATH="$PATH:$HOME/.scripts"' "~/.profile"
     echo -e "\nThe .scripts folder has been added!"
 else
     echo -e "\nThe .scripts folder already exists under ~/. Do you want to overwrite it?"
     case "$(confirm)" in
         "yes" ) rm ~/.scripts;
                 ln -s ~/.dotfiles/.scripts ~/.scripts;
-                echo 'PATH="$PATH:$HOME/.scripts"' >> ~/.profile
+                echo_safe 'PATH="$PATH:$HOME/.scripts"' "~/.profile"
                 echo "The existing .scripts folder is overwritten.";;
         "no" ) echo "The existing .scripts folder is left untouched";;
     esac
