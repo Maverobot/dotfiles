@@ -6,10 +6,10 @@ echo_safe() {
         echo "Wrong input of function ${FUNCNAME[0]}"
         return
     fi
-    if grep -Fxq $1 $(eval echo $2) &>/dev/null; then
+    if grep -Fxq "$1" "$(eval echo $2)"&>/dev/null; then
         return
     fi
-    echo $1 >> $2
+    echo "$1" >> "$(eval echo $2)"
 }
 
 # Get user confirmation in console
@@ -29,6 +29,8 @@ if [ ! -d $(eval echo "~/.dotfiles") ]; then
     git clone https://github.com/Maverobot/dotfiles.git ~/.dotfiles
 else
     echo "The folder ~/.dotfiles already exists."
+    cd ~/.dotfiles
+    git pull
 fi
 
 # Install i3wm dependencies
@@ -75,6 +77,10 @@ else
         "no" ) echo "The existing systemd config is left untouched";;
     esac
 fi
+# Setup emacsclient (terminal) with alias: vi (short for evil, vim-style)
+echo_safe "alias vi='emacsclient -t'" "~/.bash_aliases"
+# Setup emacsclient (gui) with alias: emacs (for emacs, gui-style)
+echo_safe "alias emacs='emacsclient -nc'" "~/.bash_aliases"
 
 # #---Install scripts---# #
 if [ ! -d $(eval echo "~/.scripts") ]; then
