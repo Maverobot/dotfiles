@@ -13,7 +13,7 @@ git clone https://github.com/Maverobot/dotfiles.git ~/.dotfiles
 To install the i3 window manager:
 ```
 # Install dependencies
-sudo apt install i3-wm i3status i3lock xautolock suckless-tools
+sudo apt install i3-wm i3status i3lock xautolock suckless-tools arandr dunst
 
 # Create soft link in ~/.config
 ln -s ~/.dotfiles/.config/i3 ~/.config/
@@ -34,4 +34,13 @@ echo "alias vi='emacsclient -t'" >> ~/.bash_aliases
 
 # Setup emacsclient (gui) with alias: emacs (for emacs, gui-style) 
 echo "alias emacs='emacsclient -nc'" >> ~/.bash_aliases
+```
+
+## Install scripts
+```
+# Create soft link ~/.scripts
+ln -s ~/.dotfiles/.scripts ~/.scripts
+
+# Add ~/.scripts to $PATH
+echo 'PATH="$PATH:$HOME/.scripts"' >> ~/.profile
 ```
