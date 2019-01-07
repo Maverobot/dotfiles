@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+# This script tries to restart the given program when it is closed
+STARTTIME=$(date +%s%N)
+
+timer_start() {
+    STARTTIME=$(date +%s%N)
+}
+
+timer_elapsedTime() {
+    local ENDTIME=$(date +%s%N)
+    echo $((($ENDTIME - $STARTTIME) / 1000000))
+}
+
+if [ $# -lt 1 ]; then
+    echo "Usage: $0 <command with arguments>"
+    exit 1
+fi
+
+cmd=""
+while (($#)); do
+    cmd="$cmd $1"
+    shift
+done
+
+while [ 1 ] 
+do
+    echo -e "Execute command $cmd\n";
+
+    timer_start
+    $cmd
+    elapsed_time=$(timer_elapsedTime)
+    if [ "$elapsed_time" -lt 1000 ]; then
+        echo -e "\nIt takes too short ($elapsed_time milliseconds ) to complete this task."
+        echo "To prevend misusage, $0 is exiting..."; exit
+    fi
+
+    ret=$?
+    if [ $ret -ne 0 ]; then
+        echo "Exiting..."; exit
+    fi
+    echo "Restart command $cmd"
+
+done
+
