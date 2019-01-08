@@ -1,6 +1,9 @@
 #!/bin/sh
-# This script was made by `goferito` on Github.
-# Some cleanup by Luke.
+###################################################################
+#Description  : Resize window in i3 window manager
+#Args         : None
+#Author       : Goferito and LukeSmithxyz
+###################################################################
 
 [ -z "$1" ] && echo "No direction provided" && exit 1
 distanceStr="2 px or 2 ppt"
