@@ -6,6 +6,8 @@ This is my personal dotfiles, which contains configurations of:
 # Installation
 ```
 git clone https://github.com/Maverobot/dotfiles.git ~/.dotfiles
+cd ~/.dotfiles
+./install.sh
 ```
 
 # Configurations 
