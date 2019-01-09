@@ -35,9 +35,9 @@ fi
 
 # Install i3wm dependencies
 echo ""
-sudo apt install i3-wm i3status i3lock xautolock suckless-tools arandr dunst terminator xclip
+sudo apt install i3-wm i3status i3lock xautolock suckless-tools arandr dunst terminator xclip mps-youtube
 echo ""
-pip3 install --user mps-youtube youtube-dl
+pip3 install --user youtube-dl
 
 # #---Install i3wm config---# #
 if [ ! -d $(eval echo "~/.config") ]; then
