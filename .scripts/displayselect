@@ -1,9 +1,16 @@
 #!/bin/sh
 
+###################################################################
+#Description  : A UI for detecting and selecting all displays.
+#               Probes xrandr for connected displays and lets user select one to use.
+#               User may also select "manual selection" which opens arandr.
+#Args         : None
+#Author       : LukeSmithxyz
+###################################################################
 # A UI for detecting and selecting all displays.
 # Probes xrandr for connected displays and lets user select one to use.
 # User may also select "manual selection" which opens arandr.
-# I plan on adding a routine from multi-monitor setups later.
+# Orignally from github user $LukeSmithxyz, updated by @Maverobot
 
 twoscreen() { # If multi-monitor is selected and there are two screens.
 
