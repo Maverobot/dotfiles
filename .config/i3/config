@@ -67,10 +67,10 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+o split h
+bindsym $mod+e split h
 
 # split in vertical orientation
-bindsym $mod+e split v
+bindsym $mod+o split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -177,7 +177,7 @@ bindsym $mod+Shift+minus move scratchpad
 # Show the first scratchpad window
 bindsym $mod+minus scratchpad show
 
-# Start terminator as a special scratchpad
+# Boot terminator as a special scratchpad, and bind it with $mod+F1
 exec --no-startup-id persistentapp terminator -c "sterm"
 for_window [instance="sterm"] move scratchpad
 bindsym $mod+F1 [instance="sterm"] scratchpad show

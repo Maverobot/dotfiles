@@ -1,7 +1,9 @@
 #!/bin/sh
-
-# Display contents of selection via dunst if running.
-# Separate script for i3.
+###################################################################
+#Description  : Display contents of selection via dunst if running.
+#Args         : None
+#Author       : LukeSmithxyz
+###################################################################
 
 ! pgrep -x dunst >/dev/null && echo "dunst not running." && exit
 
