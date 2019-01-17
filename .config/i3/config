@@ -197,5 +197,9 @@ exec --no-startup-id dunst
 # Clipboard
 bindsym $mod+Insert		exec --no-startup-id showclip
 
+# Screenshot
+bindsym Print exec screenshot --fullscreen
+bindsym --release $mod+Shift+a exec screenshot --select
+
 # #---Function Buttons---# #
 bindsym $mod+F8 exec --no-startup-id displayselect
