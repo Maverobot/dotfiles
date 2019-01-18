@@ -147,11 +147,41 @@ mode "resize" {
 
 bindsym $mod+Shift+r mode "resize"
 
+set $base00 #101218
+set $base01 #1f222d
+set $base02 #252936
+set $base03 #7780a1
+set $base04 #C0C5CE
+set $base05 #d1d4e0
+set $base06 #C9CCDB
+set $base07 #ffffff
+set $base08 #ee829f
+set $base09 #f99170
+set $base0A #ffefcc
+set $base0B #a5ffe1
+set $base0C #97e0ff
+set $base0D #97bbf7
+set $base0E #c0b7f9
+set $base0F #fcc09e
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3blocks
-        tray_output primary
+        status_command i3blocks -c ~/.config/i3/i3blocks.conf
+	      font pango: System San Francisco Display, FontAwesome 12
+        strip_workspace_numbers yes
+        #bindsym button4 nop
+        #bindsym button5 nop
+        colors {
+              separator $base03
+              background $base01
+              statusline $base05
+#                        border  background text
+              focused_workspace  $base01 $base01    $base07
+              active_workspace   $base01 $base02    $base03
+              inactive_workspace $base01 $base01    $base03
+              urgent_workspace   $base01 $base01    $base08
+    }
 }
 
 # Wallpaper
