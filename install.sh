@@ -35,9 +35,10 @@ fi
 
 # Install i3wm dependencies
 echo ""
-sudo apt install i3-wm i3status i3lock xautolock suckless-tools arandr dunst terminator xclip mps-youtube zathura* sxiv entr
+sudo apt install i3-wm i3status i3lock xautolock suckless-tools arandr dunst terminator xclip mps-youtube zathura* sxiv entr compton feh
+# For some reason, compton has to be installed so that terminator can have transparency effect.
 echo ""
-pip3 install --user youtube-dl
+pip3 install --user ranger-fm youtube-dl
 
 # #---Install i3wm config---# #
 if [ ! -d $(eval echo "~/.config") ]; then
