@@ -154,6 +154,9 @@ bar {
         tray_output primary
 }
 
+# Wallpaper
+exec --no-startup-id feh --bg-scale ~/.config/wall.png
+
 # Natural scroll
 exec --no-startup-id synclient VertScrollDelta=-79 synclient HorizScrollDelta=-79
 
