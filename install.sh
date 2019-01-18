@@ -24,6 +24,32 @@ confirm() {
     done
 }
 
+# Create a softlink to the folder under .config
+create_link_for_folder() {
+    folder_name=$1
+    src=$(eval echo "~/.dotfiles/.config/${folder_name}")
+    dest=$(eval echo "~/.config/${folder_name}")
+    echo "${dest}"
+    # Check if the src folder exists
+    if [ ! -d ${src} ]; then
+        echo -e "\n The folder ${src} does not exist."
+        return
+    fi
+    if [ ! -d ${dest} ]; then
+        ln -s ~/.dotfiles/.config/${folder_name} ~/.config/
+        echo -e "\nThe ${folder_name} config has been added!"
+    else
+        echo -e "\nThe ${folder_name} config already exists under ~/.config. Do you want to overwrite it?"
+        case "$(confirm)" in
+            "yes" ) mv ${dest} /tmp;
+                    ln -s ${src} ~/.config/;
+                    echo "The existing ${folder_name} config is overwritten.";;
+            "no" ) echo "The existing ${folder_name} config is left untouched";;
+        esac
+    fi
+}
+
+
 # Download dotfiles from github
 if [ ! -d $(eval echo "~/.dotfiles") ]; then
     git clone https://github.com/Maverobot/dotfiles.git ~/.dotfiles
@@ -48,38 +74,13 @@ else
     echo "Folder .config already exits under ~/"
 fi
 
-if [ ! -d $(eval echo "~/.config/i3") ]; then
-    ln -s ~/.dotfiles/.config/i3 ~/.config/
-    echo -e "\nThe i3 config has been added!"
-else
-    echo -e "\nThe i3 config already exists under ~/.config. Do you want to overwrite it?"
-    case "$(confirm)" in
-        "yes" ) rm ~/.config/i3;
-                ln -s ~/.dotfiles/.config/i3 ~/.config/;
-                echo "The existing i3 config is overwritten.";;
-        "no" ) echo "The existing i3 config is left untouched";;
-    esac
-fi
+create_link_for_folder "i3"
+create_link_for_folder "systemd"
+create_link_for_folder "ranger"
 
-# #---Install systemd config---# #
-if [ ! -d $(eval echo "~/.config/systemd") ]; then
-    ln -s ~/.dotfiles/.config/systemd ~/.config/
-    # Enable the service
-    systemctl enable --user emacs
-    systemctl start --user emacs
-    echo -e "\nThe systemd config has been added!"
-else
-    echo -e "\nThe systemd config already exists under ~/.config. Do you want to overwrite it?"
-    case "$(confirm)" in
-        "yes" ) rm ~/.config/systemd;
-                ln -s ~/.dotfiles/.config/systemd ~/.config/;
-                # Enable the service
-                systemctl enable --user emacs
-                systemctl start --user emacs
-                echo "The existing systemd config is overwritten.";;
-        "no" ) echo "The existing systemd config is left untouched";;
-    esac
-fi
+systemctl enable --user emacs
+systemctl start --user emacs
+
 # Setup emacsclient (terminal) with alias: vi (short for evil, vim-style)
 echo_safe "alias vi='emacsclient -t'" "~/.bash_aliases"
 # Setup emacsclient (gui) with alias: emacs (for emacs, gui-style)
@@ -93,7 +94,7 @@ if [ ! -d $(eval echo "~/.scripts") ]; then
 else
     echo -e "\nThe .scripts folder already exists under ~/. Do you want to overwrite it?"
     case "$(confirm)" in
-        "yes" ) rm ~/.scripts;
+        "yes" ) mv ~/.scripts /tmp;
                 ln -s ~/.dotfiles/.scripts ~/.scripts;
                 echo_safe 'PATH="$PATH:$HOME/.scripts"' "~/.profile"
                 echo "The existing .scripts folder is overwritten.";;
