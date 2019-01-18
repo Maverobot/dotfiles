@@ -77,6 +77,7 @@ fi
 create_soft_link "~/.dotfiles/.config/i3" "~/.config/i3"
 create_soft_link "~/.dotfiles/.config/systemd" "~/.config/systemd"
 create_soft_link "~/.dotfiles/.config/ranger" "~/.config/ranger"
+create_soft_link "~/.dotfiles/.scripts" "~/.scripts"
 
 systemctl enable --user emacs
 systemctl start --user emacs
@@ -85,19 +86,5 @@ systemctl start --user emacs
 echo_safe "alias vi='emacsclient -t'" "~/.bash_aliases"
 # Setup emacsclient (gui) with alias: emacs (for emacs, gui-style)
 echo_safe "alias emacs='emacsclient -nc'" "~/.bash_aliases"
-
-# #---Install scripts---# #
-if [ ! -d $(eval echo "~/.scripts") ]; then
-    ln -s ~/.dotfiles/.scripts ~/.scripts
-    echo_safe 'PATH="$PATH:$HOME/.scripts"' "~/.profile"
-    echo -e "\nThe .scripts folder has been added!"
-else
-    echo -e "\nThe .scripts folder already exists under ~/. Do you want to overwrite it?"
-    case "$(confirm)" in
-        "yes" ) mv ~/.scripts /tmp;
-                ln -s ~/.dotfiles/.scripts ~/.scripts;
-                echo_safe 'PATH="$PATH:$HOME/.scripts"' "~/.profile"
-                echo "The existing .scripts folder is overwritten.";;
-        "no" ) echo "The existing .scripts folder is left untouched";;
-    esac
-fi
+# Add .script to PATH
+echo_safe 'PATH="$PATH:$HOME/.scripts"' "~/.profile"
