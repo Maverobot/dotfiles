@@ -25,26 +25,26 @@ confirm() {
 }
 
 # Create a softlink to the folder under .config
-create_link_for_folder() {
-    folder_name=$1
-    src=$(eval echo "~/.dotfiles/.config/${folder_name}")
-    dest=$(eval echo "~/.config/${folder_name}")
-    echo "${dest}"
+create_soft_link() {
+    src=$(eval echo "$1")
+    dest=$(eval echo "$2")
     # Check if the src folder exists
     if [ ! -d ${src} ]; then
-        echo -e "\n The folder ${src} does not exist."
+        echo -e "\n ${src} does not exist."
         return
     fi
     if [ ! -d ${dest} ]; then
-        ln -s ~/.dotfiles/.config/${folder_name} ~/.config/
-        echo -e "\nThe ${folder_name} config has been added!"
+        ln -sT ${src} ${dest}
+        echo -e "\nSoft link of ${src} has been created at ${dest}"
     else
-        echo -e "\nThe ${folder_name} config already exists under ~/.config. Do you want to overwrite it?"
+        echo -e "\n${dest} already exists. Do you want to overwrite it?"
         case "$(confirm)" in
-            "yes" ) mv ${dest} /tmp;
-                    ln -s ${src} ~/.config/;
-                    echo "The existing ${folder_name} config is overwritten.";;
-            "no" ) echo "The existing ${folder_name} config is left untouched";;
+            "yes" ) cp -r ${dest} /tmp;
+                    rm -r ${dest}
+                    ln -sT ${src} ${dest}
+                    echo "${dest} has been moved to /tmp"
+                    echo "Soft link of ${src} has been created at ${dest}";;
+            "no" ) echo "${dest} is left untouched";;
         esac
     fi
 }
@@ -74,9 +74,9 @@ else
     echo "Folder .config already exits under ~/"
 fi
 
-create_link_for_folder "i3"
-create_link_for_folder "systemd"
-create_link_for_folder "ranger"
+create_soft_link "~/.dotfiles/.config/i3" "~/.config/i3"
+create_soft_link "~/.dotfiles/.config/systemd" "~/.config/systemd"
+create_soft_link "~/.dotfiles/.config/ranger" "~/.config/ranger"
 
 systemctl enable --user emacs
 systemctl start --user emacs
