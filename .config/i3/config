@@ -118,8 +118,6 @@ bindsym $mod+Shift+0 move container to workspace 10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
@@ -147,7 +145,7 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
-bindsym $mod+r mode "resize"
+bindsym $mod+Shift+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -186,20 +184,25 @@ bindsym $mod+F1 [instance="sterm"] scratchpad show
 bindsym mod4+s [title="^Sup ::"] scratchpad show
 
 # Window resize management
-bindsym $mod+Shift+u   exec --no-startup-id i3resize left
-bindsym $mod+Shift+i   exec --no-startup-id i3resize down
-bindsym $mod+Shift+o   exec --no-startup-id i3resize up
-bindsym $mod+Shift+p   exec --no-startup-id i3resize right
+bindsym $mod+Shift+u exec --no-startup-id i3resize left
+bindsym $mod+Shift+i exec --no-startup-id i3resize down
+bindsym $mod+Shift+o exec --no-startup-id i3resize up
+bindsym $mod+Shift+p exec --no-startup-id i3resize right
 
 # Starts dunst for notifications:
 exec --no-startup-id dunst
 
+# Starts file manager
+bindsym $mod+r   exec i3-sensible-terminal -e ranger
+
 # Clipboard
-bindsym $mod+Insert		exec --no-startup-id showclip
+bindsym $mod+Insert   exec --no-startup-id showclip
 
 # Screenshot
 bindsym Print exec screenshot --fullscreen
 bindsym --release $mod+Shift+a exec screenshot --select
 
 # #---Function Buttons---# #
+bindsym $mod+F2 restart # restart i3 inplace 
 bindsym $mod+F8 exec --no-startup-id displayselect
+
