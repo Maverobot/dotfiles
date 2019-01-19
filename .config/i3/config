@@ -227,6 +227,7 @@ exec --no-startup-id dunst
 
 # Starts file manager
 bindsym $mod+r   exec i3-sensible-terminal -e ranger
+bindsym $mod+m   exec i3-sensible-terminal -e emacsclient -t
 
 # Clipboard
 bindsym $mod+Insert   exec --no-startup-id showclip
