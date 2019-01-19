@@ -226,8 +226,8 @@ bindsym $mod+Shift+p exec --no-startup-id i3resize right
 exec --no-startup-id dunst
 
 # Starts file manager
-bindsym $mod+r   exec i3-sensible-terminal -e ranger
-bindsym $mod+m   exec i3-sensible-terminal -e emacsclient -t
+bindsym $mod+r   exec terminator -e ranger
+bindsym $mod+m   exec terminator -e "export TERM=xterm-256color && emacsclient -t"
 
 # Clipboard
 bindsym $mod+Insert   exec --no-startup-id showclip
