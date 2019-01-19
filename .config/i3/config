@@ -168,17 +168,17 @@ set $base0F #fcc09e
 # finds out, if available)
 bar {
         status_command i3blocks -c ~/.config/i3/i3blocks.conf
-	      font pango: System San Francisco Display, FontAwesome 12
-        strip_workspace_numbers yes
+	      font pango: System San Francisco Display, FontAwesome 10
+        strip_workspace_numbers no 
         #bindsym button4 nop
         #bindsym button5 nop
         colors {
               separator $base03
               background $base01
               statusline $base05
-#                        border  background text
-              focused_workspace  $base01 $base01    $base07
-              active_workspace   $base01 $base02    $base03
+#                                border  background text
+              focused_workspace  $base04 $base02    $base07
+              active_workspace   $base01 $base01    $base03
               inactive_workspace $base01 $base01    $base03
               urgent_workspace   $base01 $base01    $base08
     }
