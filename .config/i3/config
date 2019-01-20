@@ -168,7 +168,7 @@ set $base0F #fcc09e
 # finds out, if available)
 bar {
         status_command i3blocks -c ~/.config/i3/i3blocks.conf
-        font pango:monospace 10
+        font pango:monospace, Font Awesome 10
         strip_workspace_numbers no 
         colors {
               separator $base03
