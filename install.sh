@@ -53,10 +53,13 @@ create_soft_link() {
 # Download dotfiles from github
 if [ ! -d $(eval echo "~/.dotfiles") ]; then
     git clone https://github.com/Maverobot/dotfiles.git ~/.dotfiles
+    cd ~/.dotfiles
+    git submodule update --init --recursive
 else
     echo "The folder ~/.dotfiles already exists."
     cd ~/.dotfiles
     git pull
+    git submodule update --init --recursive
 fi
 
 # Install i3wm dependencies
