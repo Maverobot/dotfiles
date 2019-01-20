@@ -80,6 +80,7 @@ fi
 create_soft_link "~/.dotfiles/.config/i3" "~/.config/i3"
 create_soft_link "~/.dotfiles/.config/systemd" "~/.config/systemd"
 create_soft_link "~/.dotfiles/.config/ranger" "~/.config/ranger"
+create_soft_link "~/.dotfiles/.config/dunst" "~/.config/dunst"
 create_soft_link "~/.dotfiles/.scripts" "~/.scripts"
 
 systemctl enable --user emacs
