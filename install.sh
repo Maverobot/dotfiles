@@ -89,7 +89,7 @@ echo_safe "alias emacs='emacsclient -nc'" "~/.bash_aliases"
 # Add .script to PATH
 echo_safe 'PATH="$PATH:$HOME/.scripts"' "~/.profile"
 # Add force 256 corlor
-echo_safe 'export TERM=xterm-256color' "~/.profile"
+echo_safe 'export TERM=xterm-256color' "~/.bashrc"
 # Enable vim mode in bash
 set -o vi
 # Allow cd into directory by merely typing the name
