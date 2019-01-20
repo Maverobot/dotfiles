@@ -61,7 +61,7 @@ fi
 
 # Install i3wm dependencies
 echo ""
-sudo apt install i3-wm i3status i3blocks i3lock xautolock suckless-tools arandr dunst terminator xclip mps-youtube zathura* sxiv entr compton feh fonts-font-awesome w3m-img
+sudo apt install i3-wm i3status i3blocks i3lock xautolock suckless-tools arandr dunst terminator xclip mps-youtube zathura* sxiv entr compton feh fonts-font-awesome w3m-img python3-pip
 # For some reason, compton has to be installed so that terminator can have transparency effect.
 echo ""
 pip3 install --user ranger-fm youtube-dl
@@ -87,7 +87,9 @@ echo_safe "alias vi='emacsclient -t'" "~/.bash_aliases"
 # Setup emacsclient (gui) with alias: emacs (for emacs, gui-style)
 echo_safe "alias emacs='emacsclient -nc'" "~/.bash_aliases"
 # Add .script to PATH
-echo_safe 'PATH="$PATH:$HOME/.scripts"' "~/.profile"
+echo_safe 'export PATH="$PATH:$HOME/.scripts"' "~/.profile"
+# Add ~/.local/bin to PATH
+echo_safe 'export PATH="$PATH:$HOME/.local/bin"' "~/.profile"
 # Add force 256 corlor
 echo_safe 'export TERM=xterm-256color' "~/.bashrc"
 # Add term style
