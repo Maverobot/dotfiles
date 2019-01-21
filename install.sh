@@ -64,7 +64,7 @@ fi
 
 # Install i3wm dependencies
 echo ""
-sudo apt install i3-wm i3status i3blocks i3lock xautolock suckless-tools arandr dunst terminator xclip mps-youtube zathura* sxiv entr compton feh fonts-font-awesome w3m-img python3-pip scrot
+sudo apt install i3-wm i3status i3blocks i3lock xautolock suckless-tools arandr dunst terminator xclip mps-youtube zathura* sxiv entr compton feh fonts-font-awesome w3m-img python3-pip scrot byzanz
 # For some reason, compton has to be installed so that terminator can have transparency effect.
 echo ""
 pip3 install --user ranger-fm youtube-dl
