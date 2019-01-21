@@ -1,3 +1,0 @@
-[submodule ".scripts/i3blocks-contrib"]
-	path = .scripts/i3blocks-contrib
-	url = https://github.com/Maverobot/i3blocks-contrib.git
