@@ -14,7 +14,7 @@ filename=`date +%Y-%m-%d_%H:%M:%S.gif`
 if [ $# -gt 0 ]; then
     D="--duration=$@"
 else
-    echo "Default recording duration 3s to /tmp/${filename}"
+    echo "Default recording duration 10s to /tmp/${filename}"
     D="--duration=10 /tmp/${filename}"
 fi
 XWININFO=$(xwininfo)
