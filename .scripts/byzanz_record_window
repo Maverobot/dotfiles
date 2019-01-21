@@ -1,19 +1,21 @@
 #!/usr/bin/env bash
 
 # Delay before starting
-DELAY=10
+DELAY=3
 
 # Sound notification to let one know when recording is about to start (and ends)
 beep() {
     paplay /usr/share/sounds/KDE-Im-Irc-Event.ogg &
 }
 
+filename=`date +%Y-%m-%d_%H:%M:%S.gif`
+
 # Duration and output file
 if [ $# -gt 0 ]; then
     D="--duration=$@"
 else
-    echo Default recording duration 10s to /tmp/recorded.gif
-    D="--duration=10 /tmp/recorded.gif"
+    echo "Default recording duration 3s to /tmp/${filename}"
+    D="--duration=10 /tmp/${filename}"
 fi
 XWININFO=$(xwininfo)
 read X <<< $(awk -F: '/Absolute upper-left X/{print $2}' <<< "$XWININFO")
@@ -27,6 +29,7 @@ for (( i=$DELAY; i>0; --i )) ; do
     sleep 1
 done
 
-beep
-byzanz-record --verbose --delay=0 --x=$X --y=$Y --width=$W --height=$H $D
-beep
+#beep
+echo "Start recording"
+byzanz-record -c --verbose --delay=0 --x=$X --y=$Y --width=$W --height=$H $D
+echo "Stop recording"
