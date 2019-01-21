@@ -99,7 +99,7 @@ echo_safe 'export TERM=xterm-256color' "~/.bashrc"
 # Add term style
 echo_safe 'export PS1="\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 5)\]\W\[$(tput setaf 1)\]]\[$(tput setaf 7)\]\\$ \[$(tput sgr0)\]"' "~/.bashrc"
 # Enable vim mode in bash
-set -o vi
+echo_safe 'set -o vi' "~/.bashrc"
 # Allow cd into directory by merely typing the name
-shopt -s autocd
+echo_safe 'shopt -s autocd' "~/.bashrc"
 
