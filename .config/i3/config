@@ -227,7 +227,7 @@ bindsym $mod+Shift+o exec --no-startup-id i3resize up
 bindsym $mod+Shift+p exec --no-startup-id i3resize right
 
 # Starts dunst for notifications:
-exec --no-startup-id dunst
+exec --no-startup-id dunst -config ~/.config/dunst/dunstrc
 
 # Starts file manager
 bindsym $mod+r   exec terminator -e ranger
