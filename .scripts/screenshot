@@ -10,11 +10,10 @@ fi
 case $1 in
     -f|--fullscreen)
         option=""
-        notify-send "Taking a screenshot of fullscreen."
         ;;
     -s|--select)
         option="-s"
-        notify-send "Please select a window or rectangle for the screenshot."
+        notify-send -t 3000 "Please select a window or rectangle for the screenshot."
         ;;
     *)    # unknown option
         echo "Usage: $0 [-f | --fullscreen] | [-a | --area] | [-w | --window]"
