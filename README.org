@@ -1,0 +1,21 @@
+#+TITLE: dot-spacemacs 
+* dot-spacemacs 
+  :PROPERTIES:
+  :TOC:      this
+  :END:
+    -  [[#description][Description]]
+    -  [[#installation][Installation]]
+
+** Description
+   This is my personal dotfiles, which contains configurations of:
+   - i3wm
+   - ranger
+   - Emacs as daemon
+
+** Installation
+   #+BEGIN_SRC sh 
+     git clone https://github.com/Maverobot/dotfiles.git ~/.dotfiles
+     cd ~/.dotfiles
+     ./install.sh
+   #+END_SRC
+
