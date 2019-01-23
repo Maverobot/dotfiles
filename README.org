@@ -1,4 +1,3 @@
-#+TITLE: dot-spacemacs 
 * dot-spacemacs 
   :PROPERTIES:
   :TOC:      this
