@@ -232,6 +232,7 @@ exec --no-startup-id dunst -config ~/.config/dunst/dunstrc
 # Starts file manager
 bindsym $mod+r   exec terminator -e ranger
 bindsym $mod+m   exec terminator -e "export TERM=xterm-256color && emacsclient -t"
+bindsym $modShift+m   exec terminator -e "export TERM=xterm-256color && emacsclient -nc"
 
 # Clipboard
 bindsym $mod+Insert   exec --no-startup-id showclip
