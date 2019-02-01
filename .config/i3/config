@@ -241,6 +241,9 @@ bindsym $mod+Insert   exec --no-startup-id showclip
 bindsym Print exec screenshot --fullscreen
 bindsym --release $mod+Shift+a exec screenshot --select
 
+# USB Automount
+exec --no-startup-id udiskie -ans &
+
 # #---Function Buttons---# #
 bindsym $mod+F2 restart # restart i3 inplace 
 bindsym $mod+F8 exec --no-startup-id displayselect
