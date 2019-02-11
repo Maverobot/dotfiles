@@ -26,17 +26,17 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-function import_bash_aliases \
+function fish_import_bash_aliases \
     --description 'import bash aliases to .fish function files.'
     for a in (cat ~/.bash_aliases  | grep "^alias")
         set aname (echo $a | sed 's/alias \(.*\)=\(\'\|\"\).*/\1/')
         set command (echo $a | sed 's/alias \(.*\)=\(\'\|\"\)\(.*\)\2/\3/')
         if test -f ~/.config/fish/functions/$aname.fish
-            echo Function $aname is already defined. Skipping...
+            echo "Overwriting alias $aname as $command"
         else
-            echo "Processing alias $aname as $command"
-            alias $aname $command
-            funcsave $aname
+            echo "Creating alias $aname as $command"
         end
+        alias $aname $command
+        funcsave $aname
     end
 end
