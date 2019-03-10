@@ -90,6 +90,9 @@ systemctl start --user emacs
 echo_safe "alias vi='emacsclient -t'" "~/.bash_aliases"
 # Setup emacsclient (gui) with alias: emacs (for emacs, gui-style)
 echo_safe "alias emacs='emacsclient -nc'" "~/.bash_aliases"
+# Add GOPATH to PATH
+echo_safe 'export GOPATH="$HOME/go"' "~/.profile"
+echo_safe 'export PATH="$PATH:$GOPATH/bin"' "~/.profile"
 # Add .script to PATH
 echo_safe 'export PATH="$PATH:$HOME/.scripts"' "~/.profile"
 # Add ~/.local/bin to PATH
