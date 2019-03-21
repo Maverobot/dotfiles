@@ -106,4 +106,5 @@ echo_safe 'set -o vi' "~/.bashrc"
 echo_safe "$(cat ~/.dotfiles/.config/.inputrc)" "~/.inputrc"
 # Allow cd into directory by merely typing the name
 echo_safe 'shopt -s autocd' "~/.bashrc"
-
+# Add cd with history
+echo_safe 'source ~/.dotfiles/.scripts/cd_history.sh' "~/.bashrc"
