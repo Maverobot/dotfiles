@@ -1,4 +1,4 @@
-* dot-spacemacs 
+* dotfiles
   :PROPERTIES:
   :TOC:      this
   :END:
@@ -12,9 +12,8 @@
    - Emacs as daemon
 
 ** Installation
-   #+BEGIN_SRC sh 
+   #+BEGIN_SRC sh
      git clone https://github.com/Maverobot/dotfiles.git ~/.dotfiles
      cd ~/.dotfiles
      ./install.sh
    #+END_SRC
-
