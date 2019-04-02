@@ -86,6 +86,9 @@ create_soft_link "~/.dotfiles/.scripts" "~/.scripts"
 systemctl enable --user emacs
 systemctl start --user emacs
 
+# Setup nmcli aliases
+echo_safe "alias wifi='nmcli device wifi'" "~/.bash_aliases"
+echo_safe "alias network='nmcli device'" "~/.bash_aliases"
 # Setup emacsclient (terminal) with alias: vi (short for evil, vim-style)
 echo_safe "alias vi='emacsclient -t'" "~/.bash_aliases"
 # Setup emacsclient (gui) with alias: emacs (for emacs, gui-style)
