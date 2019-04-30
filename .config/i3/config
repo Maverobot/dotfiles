@@ -187,6 +187,7 @@ exec --no-startup-id feh --bg-scale ~/.config/wall.png
 
 # Natural scroll
 exec --no-startup-id synclient VertScrollDelta=-79 synclient HorizScrollDelta=-79
+exec --no-startup-id synclient HorizTwoFingerScroll=1
 
 # Automatically lock the screen after 10 minutes
 exec --no-startup-id xautolock -time 10 -locker 'i3lock -d -c 000000'
