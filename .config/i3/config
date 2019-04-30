@@ -169,7 +169,7 @@ set $base0F #fcc09e
 bar {
         status_command i3blocks -c ~/.config/i3/i3blocks.conf
         font pango:monospace, Font Awesome 10
-        strip_workspace_numbers no 
+        strip_workspace_numbers no
         colors {
               separator $base03
               background $base01
@@ -199,7 +199,7 @@ exec --no-startup-id xautolock -time 10 -locker 'i3lock -d -c 000000'
 #bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
 # change volume or toggle mute
-bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 5%+ && pkill -RTMIN+1 i3blocks 
+bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 5%+ && pkill -RTMIN+1 i3blocks
 bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 5%- && pkill -RTMIN+1 i3blocks
 bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle && pkill -RTMIN+1 i3blocks
 
@@ -246,6 +246,5 @@ bindsym --release $mod+Shift+a exec screenshot --select
 exec --no-startup-id udiskie -ans &
 
 # #---Function Buttons---# #
-bindsym $mod+F2 restart # restart i3 inplace 
+bindsym $mod+F2 restart # restart i3 inplace
 bindsym $mod+F8 exec --no-startup-id displayselect
-
