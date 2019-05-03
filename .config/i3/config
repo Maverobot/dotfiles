@@ -232,10 +232,10 @@ bindsym $mod+Shift+p exec --no-startup-id i3resize right
 # Starts dunst for notifications:
 exec --no-startup-id dunst -config ~/.config/dunst/dunstrc
 
-# Starts file manager
-bindsym $mod+r   exec terminator -e ranger
-bindsym $mod+m   exec terminator -e "export TERM=xterm-256color && emacsclient -t"
-bindsym $modShift+m   exec "export TERM=xterm-256color && emacsclient -nc"
+# File manager and emacs bindings
+bindsym $mod+r         exec terminator -e ranger
+bindsym $mod+m         exec terminator -e "export TERM=xterm-256color && emacsclient -t"
+bindsym $mod+Shift+m   exec "export TERM=xterm-256color && emacsclient -nc"
 
 # Clipboard
 bindsym $mod+Insert   exec --no-startup-id showclip
