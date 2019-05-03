@@ -250,3 +250,10 @@ exec --no-startup-id udiskie -ans &
 # #---Function Buttons---# #
 bindsym $mod+F2 restart # restart i3 inplace
 bindsym $mod+F8 exec --no-startup-id displayselect
+
+# Gaps
+for_window [class=".*"] border pixel 2
+gaps inner 20
+gaps outer 20
+bindsym $mod+plus			  gaps inner current minus 5
+bindsym $mod+Shift+plus	gaps inner current plus 5
