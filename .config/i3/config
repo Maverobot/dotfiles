@@ -216,9 +216,9 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 # Boot terminator as a special scratchpad, and bind it with $mod+F1
-exec --no-startup-id persistentapp terminator -c "sterm"
-for_window [instance="sterm"] move scratchpad
-bindsym $mod+F1 [instance="sterm"] scratchpad show
+exec --no-startup-id persistentapp terminator -c "term_scratch"
+for_window [instance="term_scratch"] move scratchpad
+bindsym $mod+F1 [instance="term_scratch"] scratchpad show
 
 # Show the sup-mail scratchpad window, if any.
 bindsym mod4+s [title="^Sup ::"] scratchpad show
