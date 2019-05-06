@@ -262,7 +262,8 @@ bindsym $mod+F8 exec --no-startup-id displayselect
 
 # Gaps
 for_window [class=".*"] border pixel 2
-gaps inner 20
-gaps outer 20
+smart_gaps on
+gaps inner 8
+gaps outer 2
 bindsym $mod+plus			  gaps inner current minus 5
 bindsym $mod+Shift+plus	gaps inner current plus 5
