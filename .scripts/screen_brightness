@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+
+usage()
+{
+    echo "Change screen brightness."
+    echo ""
+    echo "${0}"
+    printf "\t-h --help\n"
+    printf "\t-inc|--increase delta_brightness\n"
+    printf "\t-dec|--decrease delta_brightness\n"
+    printf "\t-set brightness\n"
+    echo ""
+}
+
+BRIGHTNESS=$(xrandr --verbose | grep -m 1 -i brightness | cut -f2 -d ' ')
+
+while [ $# -gt 0 ]; do
+    key="${1}"
+    case ${key} in
+        -inc|--increase)
+            DELTA="+${2}"
+            break
+            ;;
+        -dec|--decrease)
+            DELTA="-${2}"
+            break
+            ;;
+        -set)
+            BRIGHTNESS="${2}"
+            break
+            ;;
+        -h|--help)
+            usage
+            break
+            ;;
+        *)    # unknown option
+            echo "Show help"
+            return 1
+            ;;
+    esac
+    shift
+done
+SCREEN=$(xrandr | grep " connected" | cut -f1 -d " ")
+
+BRIGHTNESS=$(bc <<< "${BRIGHTNESS}${DELTA}")
+if (( $(echo "$BRIGHTNESS > 1.0" |bc -l) )); then
+    BRIGHTNESS="1.0"
+elif (( $(echo "$BRIGHTNESS < 0.1" |bc -l) )); then
+    BRIGHTNESS="0.1"
+fi
+
+xrandr --output "${SCREEN}" --brightness "${BRIGHTNESS}"

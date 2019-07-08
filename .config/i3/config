@@ -203,17 +203,14 @@ exec --no-startup-id synclient HorizTwoFingerScroll=1
 # Automatically lock the screen after 10 minutes
 exec --no-startup-id xautolock -time 10 -locker 'i3lock -d -c 000000'
 
-# Volume control and icon
-#exec --no-startup-id volumeicon
-#bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
-#bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
-#bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+# Change screen backlight
+bindsym XF86MonBrightnessUp exec ~/.scripts/screen_brightness -inc 0.1 # increase screen brightness
+bindsym XF86MonBrightnessDown exec ~/.scripts/screen_brightness -dec 0.1 # decrease screen brightness
 
-# change volume or toggle mute
+# Change volume or toggle mute
 bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 5%+ && pkill -RTMIN+1 i3blocks
 bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 5%- && pkill -RTMIN+1 i3blocks
 bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle && pkill -RTMIN+1 i3blocks
-
 
 # Keybinding for locking screen
 bindsym $MOD+SHIFT+x exec i3lock -c 000000
