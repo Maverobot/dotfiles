@@ -190,6 +190,9 @@ bar {
             binding_mode        #229c56 #229c56 #ffffff
         }
 }
+# fcitx Chinese input method
+exec --no-startup-id fcitx
+
 # Transparancy
 exec --no-startup-id compton
 
