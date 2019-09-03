@@ -224,10 +224,11 @@ bindsym $mod+Shift+minus move scratchpad
 # Show the first scratchpad window
 bindsym $mod+minus scratchpad show
 
+# TODO(qu_zh): following code only works at Ubuntu 16.04
 # Boot terminator as a special scratchpad, and bind it with $mod+F1
-exec --no-startup-id persistentapp terminator -c "term_scratch"
-for_window [instance="term_scratch"] move scratchpad
-bindsym $mod+F1 [instance="term_scratch"] scratchpad show
+# exec --no-startup-id persistentapp terminator -c "term_scratch"
+# for_window [instance="term_scratch"] move scratchpad
+# bindsym $mod+F1 [instance="term_scratch"] scratchpad show
 
 # Show the sup-mail scratchpad window, if any.
 bindsym mod4+s [title="^Sup ::"] scratchpad show
