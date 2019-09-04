@@ -190,6 +190,9 @@ bar {
             binding_mode        #229c56 #229c56 #ffffff
         }
 }
+# fcitx Chinese input method
+exec --no-startup-id fcitx
+
 # Transparancy
 exec --no-startup-id compton
 
@@ -203,17 +206,14 @@ exec --no-startup-id synclient HorizTwoFingerScroll=1
 # Automatically lock the screen after 10 minutes
 exec --no-startup-id xautolock -time 10 -locker 'i3lock -d -c 000000'
 
-# Volume control and icon
-#exec --no-startup-id volumeicon
-#bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
-#bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
-#bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+# Change screen backlight
+bindsym XF86MonBrightnessUp exec ~/.scripts/screen_brightness -inc 0.1 # increase screen brightness
+bindsym XF86MonBrightnessDown exec ~/.scripts/screen_brightness -dec 0.1 # decrease screen brightness
 
-# change volume or toggle mute
+# Change volume or toggle mute
 bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 5%+ && pkill -RTMIN+1 i3blocks
 bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 5%- && pkill -RTMIN+1 i3blocks
 bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle && pkill -RTMIN+1 i3blocks
-
 
 # Keybinding for locking screen
 bindsym $MOD+SHIFT+x exec i3lock -c 000000
@@ -224,10 +224,11 @@ bindsym $mod+Shift+minus move scratchpad
 # Show the first scratchpad window
 bindsym $mod+minus scratchpad show
 
-# Boot terminator as a special scratchpad, and bind it with $mod+F1
-exec --no-startup-id persistentapp terminator -c "term_scratch"
-for_window [instance="term_scratch"] move scratchpad
-bindsym $mod+F1 [instance="term_scratch"] scratchpad show
+# TODO(qu_zh): following code only works at Ubuntu 16.04
+# Boot kitty as a special scratchpad, and bind it with $mod+F1
+exec --no-startup-id persistentapp kitty --class="kitty_scratch"
+for_window [class="kitty_scratch"] move scratchpad
+bindsym $mod+F1 [class="kitty_scratch"] scratchpad show
 
 # Show the sup-mail scratchpad window, if any.
 bindsym mod4+s [title="^Sup ::"] scratchpad show
@@ -259,3 +260,11 @@ exec --no-startup-id udiskie -ans &
 # #---Function Buttons---# #
 bindsym $mod+F2 restart # restart i3 inplace
 bindsym $mod+F8 exec --no-startup-id displayselect
+
+# Gaps
+for_window [class=".*"] border pixel 2
+smart_gaps on
+gaps inner 8
+gaps outer 2
+bindsym $mod+plus			  gaps inner current minus 5
+bindsym $mod+Shift+plus	gaps inner current plus 5

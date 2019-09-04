@@ -1,5 +1,18 @@
 #!/usr/bin/env bash
 
+add_ppa_safe() {
+    for i in "$@"; do
+        grep -h "^deb.*$i" /etc/apt/sources.list.d/* > /dev/null 2>&1
+        if [ $? -ne 0 ]
+        then
+            echo "Adding ppa:$i"
+            sudo add-apt-repository -y ppa:$i
+        else
+            echo "ppa:$i already exists"
+        fi
+    done
+}
+
 # Prevent redundantly echong to a file
 echo_safe() {
     if [ $# -ne 2 ]; then
@@ -62,12 +75,23 @@ else
     git submodule update --init --recursive
 fi
 
+# Install i3-gaps
+add_ppa_safe kgilmer/speed-ricer
+sudo apt update
+sudo apt install i3-gaps
+
 # Install i3wm dependencies
 echo ""
-sudo apt install i3-wm i3status i3blocks i3lock xautolock suckless-tools arandr dunst terminator xclip mps-youtube zathura* sxiv entr compton feh fonts-font-awesome w3m-img python3-pip scrot byzanz udiskie
+sudo apt install i3status i3blocks i3lock xautolock suckless-tools arandr dunst terminator xclip mps-youtube zathura* sxiv entr feh fonts-font-awesome w3m-img python3-pip scrot byzanz udiskie fcitx-googlepinyin
 # For some reason, compton has to be installed so that terminator can have transparency effect.
 echo ""
 pip3 install --user ranger-fm youtube-dl
+
+# Install kitty terminal emulator locally
+curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
+ln -sf ~/.local/kitty.app/bin/kitty ~/.local/bin/
+sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator ~/.local/kitty.app/bin/kitty 50
+sudo update-alternatives --set x-terminal-emulator ~/.local/kitty.app/bin/kitty
 
 # #---Install i3wm config---# #
 if [ ! -d $(eval echo "~/.config") ]; then
@@ -81,6 +105,7 @@ create_soft_link "~/.dotfiles/.config/i3" "~/.config/i3"
 create_soft_link "~/.dotfiles/.config/systemd" "~/.config/systemd"
 create_soft_link "~/.dotfiles/.config/ranger" "~/.config/ranger"
 create_soft_link "~/.dotfiles/.config/dunst" "~/.config/dunst"
+create_soft_link "~/.dotfiles/.config/kitty" "~/.config/kitty"
 create_soft_link "~/.dotfiles/.scripts" "~/.scripts"
 
 systemctl enable --user emacs
