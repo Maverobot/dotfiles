@@ -69,6 +69,10 @@ sudo apt install i3-wm i3status i3blocks i3lock xautolock suckless-tools arandr 
 echo ""
 pip3 install --user ranger-fm youtube-dl
 
+# Install kitty terminal emulator locally
+curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
+ln -s ~/.local/kitty.app/bin/kitty ~/.local/bin/
+
 # #---Install i3wm config---# #
 if [ ! -d $(eval echo "~/.config") ]; then
     mkdir -p ~/.config
@@ -81,6 +85,7 @@ create_soft_link "~/.dotfiles/.config/i3" "~/.config/i3"
 create_soft_link "~/.dotfiles/.config/systemd" "~/.config/systemd"
 create_soft_link "~/.dotfiles/.config/ranger" "~/.config/ranger"
 create_soft_link "~/.dotfiles/.config/dunst" "~/.config/dunst"
+create_soft_link "~/.dotfiles/.config/kitty" "~/.config/kitty"
 create_soft_link "~/.dotfiles/.scripts" "~/.scripts"
 
 systemctl enable --user emacs
