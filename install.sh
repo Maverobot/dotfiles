@@ -1,5 +1,18 @@
 #!/usr/bin/env bash
 
+add_ppa_safe() {
+    for i in "$@"; do
+        grep -h "^deb.*$i" /etc/apt/sources.list.d/* > /dev/null 2>&1
+        if [ $? -ne 0 ]
+        then
+            echo "Adding ppa:$i"
+            sudo add-apt-repository -y ppa:$i
+        else
+            echo "ppa:$i already exists"
+        fi
+    done
+}
+
 # Prevent redundantly echong to a file
 echo_safe() {
     if [ $# -ne 2 ]; then
@@ -63,7 +76,7 @@ else
 fi
 
 # Install i3-gaps
-sudo add-apt-repository ppa:kgilmer/speed-ricer
+add_ppa_safe kgilmer/speed-ricer
 sudo apt update
 sudo apt install i3-gaps
 
