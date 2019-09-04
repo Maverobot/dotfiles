@@ -62,9 +62,14 @@ else
     git submodule update --init --recursive
 fi
 
+# Install i3-gaps
+sudo add-apt-repository ppa:kgilmer/speed-ricer
+sudo apt update
+sudo apt install i3-gaps
+
 # Install i3wm dependencies
 echo ""
-sudo apt install i3-wm i3status i3blocks i3lock xautolock suckless-tools arandr dunst terminator xclip mps-youtube zathura* sxiv entr compton feh fonts-font-awesome w3m-img python3-pip scrot byzanz udiskie fcitx-googlepinyin
+sudo apt install i3status i3blocks i3lock xautolock suckless-tools arandr dunst terminator xclip mps-youtube zathura* sxiv entr feh fonts-font-awesome w3m-img python3-pip scrot byzanz udiskie fcitx-googlepinyin
 # For some reason, compton has to be installed so that terminator can have transparency effect.
 echo ""
 pip3 install --user ranger-fm youtube-dl
