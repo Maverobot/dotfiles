@@ -244,7 +244,7 @@ exec --no-startup-id dunst -config ~/.config/dunst/dunstrc
 
 # File manager and emacs bindings
 bindsym $mod+r         exec kitty ranger
-bindsym $mod+m         exec terminator -e "export TERM=xterm-256color && emacsclient -t"
+bindsym $mod+m         exec kitty $SHELL -c "export TERM=xterm-256color && emacsclient -t"
 bindsym $mod+Shift+m   exec "export TERM=xterm-256color && emacsclient -nc"
 
 # Clipboard
