@@ -82,8 +82,7 @@ sudo apt install i3-gaps
 
 # Install i3wm dependencies
 echo ""
-sudo apt install i3status i3blocks i3lock xautolock suckless-tools arandr dunst terminator xclip mps-youtube zathura* sxiv entr feh fonts-font-awesome w3m-img python3-pip scrot byzanz udiskie fcitx-googlepinyin
-# For some reason, compton has to be installed so that terminator can have transparency effect.
+sudo apt install i3status i3blocks i3lock xautolock suckless-tools arandr dunst xclip mps-youtube zathura* sxiv entr feh fonts-font-awesome w3m-img python3-pip scrot byzanz udiskie fcitx-googlepinyin
 echo ""
 pip3 install --user ranger-fm youtube-dl
 
