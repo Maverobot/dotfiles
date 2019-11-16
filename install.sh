@@ -78,11 +78,11 @@ create_soft_link() {
 # Download dotfiles from github
 if [ ! -d "$(eval echo "${HOME}/.dotfiles")" ]; then
     git clone https://github.com/Maverobot/dotfiles.git ~/.dotfiles
-    cd ~/.dotfiles
+    cd ~/.dotfiles || exit
     git submodule update --init --recursive
 else
     echo "The folder ~/.dotfiles already exists."
-    cd ~/.dotfiles
+    cd ~/.dotfiles || exit
     git pull
     git submodule update --init --recursive
 fi
