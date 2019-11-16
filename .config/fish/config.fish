@@ -1,5 +1,7 @@
 fish_vi_key_bindings 2>/dev/null
 
+abbr l 'ls'
+
 function fish_user_key_bindings
     bind --preset -M insert \ck up-or-search
     bind --preset -M insert \cj down-or-search
@@ -10,4 +12,3 @@ end
 function fish_title
     true
 end
-
