@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-trap 'exit' ERR
+trap 'echo "Error happened. Exiting script."; exit' ERR
 
 add_ppa_unique() {
     for i in "$@"; do
