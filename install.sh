@@ -24,7 +24,7 @@ is_same() {
 }
 
 # Prevent redundantly echong to a file
-echo_safe() {
+try_echo() {
     if [ $# -ne 2 ]; then
         echo "Wrong input of function ${FUNCNAME[0]}"
         return
@@ -121,27 +121,27 @@ systemctl enable --user emacs
 systemctl start --user emacs
 
 # Setup nmcli aliases
-echo_safe "alias wifi='nmcli device wifi'" "~/.bash_aliases"
-echo_safe "alias network='nmcli device'" "~/.bash_aliases"
+try_echo "alias wifi='nmcli device wifi'" "${HOME}/.bash_aliases"
+try_echo "alias network='nmcli device'" "${HOME}/.bash_aliases"
 # Setup emacsclient (terminal) with alias: vi (short for evil, vim-style)
-echo_safe "alias vi='emacsclient -t'" "~/.bash_aliases"
+try_echo "alias vi='emacsclient -t'" "${HOME}/.bash_aliases"
 # Setup emacsclient (gui) with alias: emacs (for emacs, gui-style)
-echo_safe "alias emacs='emacsclient -nc'" "~/.bash_aliases"
+try_echo "alias emacs='emacsclient -nc'" "${HOME}/.bash_aliases"
 # Add GOPATH to PATH
-echo_safe 'export GOPATH="$HOME/go"' "~/.profile"
-echo_safe 'export PATH="$PATH:$GOPATH/bin"' "~/.profile"
+try_echo 'export GOPATH="${HOME}/go"' "${HOME}/.profile"
+try_echo 'export PATH="$PATH:$GOPATH/bin"' "${HOME}/.profile"
 # Add .script to PATH
-echo_safe 'export PATH="$PATH:$HOME/.scripts"' "~/.profile"
+try_echo 'export PATH="$PATH:$HOME/.scripts"' "${HOME}/.profile"
 # Add ~/.local/bin to PATH
-echo_safe 'export PATH="$PATH:$HOME/.local/bin"' "~/.profile"
+try_echo 'export PATH="$PATH:$HOME/.local/bin"' "${HOME}/.profile"
 # Add force 256 corlor
-echo_safe 'export TERM=xterm-256color' "~/.bashrc"
+try_echo 'export TERM=xterm-256color' "${HOME}/.bashrc"
 # Add term style
-echo_safe 'export PS1="\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 5)\]\W\[$(tput setaf 1)\]]\[$(tput setaf 7)\]\\$ \[$(tput sgr0)\]"' "~/.bashrc"
+try_echo 'export PS1="\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 5)\]\W\[$(tput setaf 1)\]]\[$(tput setaf 7)\]\\$ \[$(tput sgr0)\]"' "${HOME}/.bashrc"
 # Enable vim mode in bash and show insert/normal mode
-echo_safe 'set -o vi' "~/.bashrc"
-echo_safe "$(cat ~/.dotfiles/.config/.inputrc)" "~/.inputrc"
+try_echo 'set -o vi' "${HOME}/.bashrc"
+try_echo "$(cat ~/.dotfiles/.config/.inputrc)" "${HOME}/.inputrc"
 # Allow cd into directory by merely typing the name
-echo_safe 'shopt -s autocd' "~/.bashrc"
+try_echo 'shopt -s autocd' "${HOME}/.bashrc"
 # Add cd with history
-echo_safe 'source ~/.dotfiles/.scripts/cd_history.sh' "~/.bashrc"
+try_echo 'source ~/.dotfiles/.scripts/cd_history.sh' "${HOME}/.bashrc"
