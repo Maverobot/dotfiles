@@ -76,7 +76,7 @@ create_soft_link() {
 
 
 # Download dotfiles from github
-if [ ! -d $(eval echo "~/.dotfiles") ]; then
+if [ ! -d "$(eval echo "${HOME}/.dotfiles")" ]; then
     git clone https://github.com/Maverobot/dotfiles.git ~/.dotfiles
     cd ~/.dotfiles
     git submodule update --init --recursive
@@ -105,19 +105,20 @@ sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emula
 sudo update-alternatives --set x-terminal-emulator ~/.local/kitty.app/bin/kitty
 
 # #---Install i3wm config---# #
-if [ ! -d $(eval echo "~/.config") ]; then
+if [ ! -d "$(eval echo "${HOME}/.config")" ]; then
     mkdir -p ~/.config
     echo "Folder .config is created under ~/"
 else
     echo "Folder .config already exits under ~/"
 fi
 
-create_soft_link "~/.dotfiles/.config/i3" "~/.config/i3"
-create_soft_link "~/.dotfiles/.config/systemd" "~/.config/systemd"
-create_soft_link "~/.dotfiles/.config/ranger" "~/.config/ranger"
-create_soft_link "~/.dotfiles/.config/dunst" "~/.config/dunst"
-create_soft_link "~/.dotfiles/.config/kitty" "~/.config/kitty"
-create_soft_link "~/.dotfiles/.scripts" "~/.scripts"
+create_soft_link "${HOME}/.dotfiles/.config/i3" "${HOME}/.config/i3"
+create_soft_link "${HOME}/.dotfiles/.config/systemd" "${HOME}/.config/systemd"
+create_soft_link "${HOME}/.dotfiles/.config/ranger" "${HOME}/.config/ranger"
+create_soft_link "${HOME}/.dotfiles/.config/dunst" "${HOME}/.config/dunst"
+create_soft_link "${HOME}/.dotfiles/.config/kitty" "${HOME}/.config/kitty"
+create_soft_link "${HOME}/.dotfiles/.config/fish" "${HOME}/.config/fish"
+create_soft_link "${HOME}/.dotfiles/.scripts" "${HOME}/.scripts"
 
 systemctl enable --user emacs
 systemctl start --user emacs
