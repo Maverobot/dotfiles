@@ -99,10 +99,12 @@ echo ""
 pip3 install --user ranger-fm youtube-dl
 
 # Install kitty terminal emulator locally
-curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
-ln -sf ~/.local/kitty.app/bin/kitty ~/.local/bin/
-sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator ~/.local/kitty.app/bin/kitty 50
-sudo update-alternatives --set x-terminal-emulator ~/.local/kitty.app/bin/kitty
+if [ ! "$(command -v kitty)" ];then
+    curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
+    ln -sf ~/.local/kitty.app/bin/kitty ~/.local/bin/
+    sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator ~/.local/kitty.app/bin/kitty 50
+    sudo update-alternatives --set x-terminal-emulator ~/.local/kitty.app/bin/kitty
+fi
 
 # #---Install i3wm config---# #
 if [ ! -d "$(eval echo "${HOME}/.config")" ]; then
