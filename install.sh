@@ -37,7 +37,7 @@ try_echo() {
 
 # Get user confirmation in console
 confirm() {
-    while [ 1 ]; do
+    while true; do
         read -p "Continue (y/n)?" choice
         case "$choice" in
             y|Y ) echo "yes"; break;;
