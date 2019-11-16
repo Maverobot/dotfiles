@@ -14,6 +14,15 @@ add_ppa_unique() {
     done
 }
 
+# Check if content of folderes or files are the same
+is_same() {
+    if [ "$(diff -r "$(eval echo $1)" $(eval echo $2))" ];then
+        false
+    else
+        true
+    fi
+}
+
 # Prevent redundantly echong to a file
 echo_safe() {
     if [ $# -ne 2 ]; then
