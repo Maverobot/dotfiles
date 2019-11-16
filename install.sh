@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+trap 'exit' ERR
 
 add_ppa_unique() {
     for i in "$@"; do
