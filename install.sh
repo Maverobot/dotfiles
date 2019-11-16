@@ -110,8 +110,6 @@ fi
 if [ ! -d "$(eval echo "${HOME}/.config")" ]; then
     mkdir -p ~/.config
     echo "Folder .config is created under ~/"
-else
-    echo "Folder .config already exits under ~/"
 fi
 
 create_soft_link "${HOME}/.dotfiles/.config/i3" "${HOME}/.config/i3"
