@@ -52,19 +52,21 @@ create_soft_link() {
     src=$(eval echo "$1")
     dest=$(eval echo "$2")
     # Check if the src folder exists
-    if [ ! -d ${src} ]; then
+    if [ ! -d "${src}" ]; then
         echo -e "\n ${src} does not exist."
         return
     fi
-    if [ ! -d ${dest} ]; then
-        ln -sT ${src} ${dest}
+    if [ ! -d "${dest}" ]; then
+        ln -sT "${src}" "${dest}"
         echo -e "\nSoft link of ${src} has been created at ${dest}"
+    elif is_same "${src}" "${dest}";then
+        echo -e "${src} already exists with same content."
     else
         echo -e "\n${dest} already exists. Do you want to overwrite it?"
         case "$(confirm)" in
-            "yes" ) cp -r ${dest} /tmp;
-                    rm -r ${dest}
-                    ln -sT ${src} ${dest}
+            "yes" ) cp -rf "${dest}" /tmp;
+                    rm -r "${dest}"
+                    ln -sT "${src}" "${dest}"
                     echo "${dest} has been moved to /tmp"
                     echo "Soft link of ${src} has been created at ${dest}";;
             "no" ) echo "${dest} is left untouched";;
