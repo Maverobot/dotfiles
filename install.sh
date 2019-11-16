@@ -60,9 +60,9 @@ create_soft_link() {
         ln -sT "${src}" "${dest}"
         echo -e "\nSoft link of ${src} has been created at ${dest}"
     elif is_same "${src}" "${dest}";then
-        echo -e "${src} already exists with same content."
+        echo -e "A same ${dest} already exists. SKIP."
     else
-        echo -e "\n${dest} already exists. Do you want to overwrite it?"
+        echo -e "\nA different ${dest} already exists. Do you want to overwrite it?"
         case "$(confirm)" in
             "yes" ) cp -rf "${dest}" /tmp;
                     rm -r "${dest}"
