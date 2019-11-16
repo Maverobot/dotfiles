@@ -89,12 +89,12 @@ fi
 
 # Add PPAs
 add_ppa_unique kgilmer/speed-ricer
+add_ppa_unique fish-shell/release-3
 sudo apt update
-sudo apt install i3-gaps
 
 # Install i3wm dependencies
 echo ""
-sudo apt install i3status i3blocks i3lock xautolock suckless-tools arandr dunst xclip mps-youtube zathura sxiv entr feh fonts-font-awesome w3m-img python3-pip scrot byzanz udiskie fcitx-googlepinyin
+sudo apt install fish i3-gaps i3status i3blocks i3lock xautolock suckless-tools arandr dunst xclip mps-youtube zathura sxiv entr feh fonts-font-awesome w3m-img python3-pip scrot byzanz udiskie fcitx-googlepinyin
 echo ""
 pip3 install --user ranger-fm youtube-dl
 
