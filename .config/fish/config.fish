@@ -1,6 +1,11 @@
 # Enable vi mode (compatible with emacs projectile)
 fish_vi_key_bindings 2>/dev/null
 
+# Use block in normal mode, line in insert mode, underscore in replace mode
+fish_vi_cursor
+set fish_cursor_default block
+set fish_cursor_insert line
+set fish_cursor_visual block
 
 # Define abbreviations
 abbr l 'ls'
