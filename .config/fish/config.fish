@@ -12,6 +12,12 @@ set TERM xterm-256color
 
 # Define abbreviations
 abbr l 'ls'
+abbr q 'exit'
+abbr r 'ranger'
+abbr c 'fish_run_any_of chromium-browser google-chrome'
+abbr vi 'fish_run_any_of "emacsclient -nw" "vim"'
+# "A Dog" = git log --all --decorate --oneline --graph
+abbr lg 'git log --all --decorate --oneline --graph'
 
 # Define customized keybindings
 function fish_user_key_bindings
