@@ -96,7 +96,7 @@ sudo apt -qq update
 echo ""
 sudo apt -qq install fish i3-gaps i3status i3blocks i3lock xautolock suckless-tools arandr dunst xclip mps-youtube zathura sxiv entr feh fonts-font-awesome w3m-img python3-pip scrot byzanz udiskie fcitx-googlepinyin
 echo ""
-pip3 install --user ranger-fm youtube-dl
+pip3 install --user ranger-fm youtube-dl pygments
 echo ""
 
 # Install kitty terminal emulator locally
@@ -106,6 +106,9 @@ if [ ! "$(command -v kitty)" ];then
     sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator ~/.local/kitty.app/bin/kitty 50
     sudo update-alternatives --set x-terminal-emulator ~/.local/kitty.app/bin/kitty
 fi
+
+# Install gdb-dashboard
+wget -P ~ https://git.io/.gdbinit
 
 # #---Install i3wm config---# #
 if [ ! -d "$(eval echo "${HOME}/.config")" ]; then
