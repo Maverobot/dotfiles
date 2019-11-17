@@ -8,7 +8,7 @@ set fish_cursor_insert line
 set fish_cursor_visual block
 
 # Workaround for fish shell in kitty. Might cause bad side effects.
-set TERM xterm
+set TERM xterm-256color
 
 # Define abbreviations
 abbr l 'ls'
