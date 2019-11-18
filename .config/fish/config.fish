@@ -15,7 +15,7 @@ abbr l 'ls'
 abbr q 'exit'
 abbr r 'ranger'
 abbr c 'fish_run_any_of chromium-browser google-chrome'
-abbr vi 'fish_run_any_of "emacsclient -nw" "vim"'
+abbr vi 'emacsclient -t'
 # "A Dog" = git log --all --decorate --oneline --graph
 abbr lg 'git log --all --decorate --oneline --graph'
 
