@@ -98,6 +98,8 @@ sudo apt -qq install fish i3-gaps i3status i3blocks i3lock xautolock suckless-to
 echo ""
 pip3 install --user ranger-fm youtube-dl pygments gdbgui
 echo ""
+sudo snap install peco
+echo ""
 
 # Install kitty terminal emulator locally
 if [ ! "$(command -v kitty)" ];then
