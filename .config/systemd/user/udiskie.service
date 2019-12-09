@@ -1,0 +1,22 @@
+[Unit]
+Description=udiskie
+Documentation=info:udiskie website:https://github.com/coldfix/udiskie
+
+[Service]
+ExecStart=/usr/bin/udiskie -ans
+Restart=always
+
+[Install]
+WantedBy=default.target
+
+# Use this file:
+#     systemctl enable --user udiskie
+#     systemctl start --user udiskie
+
+# If there exists permission issue, try to create file /etc/polkit-1/localauthority/50-local.d/10-udiskie.pkla with content:
+#
+# [udisks2]
+# Identity=unix-user:*
+# Action=org.freedesktop.udisks2.filesystem-mount-other-seat;org.freedesktop.udisks2.filesystem-mount
+# ResultAny=yes
+#
