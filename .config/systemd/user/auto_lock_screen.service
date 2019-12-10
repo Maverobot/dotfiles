@@ -1,0 +1,10 @@
+[Unit]
+Description=auto_lock_screen
+Documentation=info:Automatically lock screen using xautolock
+
+[Service]
+ExecStart=/usr/bin/xautolock -time 10 -locker '~/.scripts/auto_lock_screen.sh '
+Restart=always
+
+[Install]
+WantedBy=default.target
