@@ -3,33 +3,33 @@
 option=""
 
 if [ $# -ne 1 ]; then
-    echo "Usage: $0 [-f | --fullscreen] | [-a | --area] | [-w | --window]"
-    exit 1
+	echo "Usage: $0 [-f | --fullscreen] | [-a | --area] | [-w | --window]"
+	exit 1
 fi
 
 case $1 in
-    -f|--fullscreen)
-        option=""
-        ;;
-    -s|--select)
-        option="-s"
-        notify-send -t 3000 "Please select a window or rectangle for the screenshot."
-        ;;
-    *)    # unknown option
-        echo "Usage: $0 [-f | --fullscreen] | [-a | --area] | [-w | --window]"
-        exit 1
-        ;;
+-f | --fullscreen)
+	option=""
+	;;
+-s | --select)
+	option="-s"
+	notify-send -t 3000 "Please select a window or rectangle for the screenshot."
+	;;
+*) # unknown option
+	echo "Usage: $0 [-f | --fullscreen] | [-a | --area] | [-w | --window]"
+	exit 1
+	;;
 esac
 
 rel_path="~/Pictures/Screenshots"
 abs_path="$(eval echo ${rel_path})"
 
 if [ ! -d "${abs_path}" ]; then
-    echo "not exist"
-    mkdir -p "${abs_path}"
+	echo "not exist"
+	mkdir -p "${abs_path}"
 fi
 
-filename=`date +%Y-%m-%d_%H:%M:%S.png`
+filename=$(date +%Y-%m-%d_%H:%M:%S.png)
 
 scrot $option $abs_path/$filename && notify-send "A screenshot is saved under $abs_path$filename"
 xclip -selection clipboard -t image/png -i $abs_path/$filename

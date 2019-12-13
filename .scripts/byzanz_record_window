@@ -6,28 +6,28 @@ DURATION=30
 
 # Sound notification to let one know when recording is about to start (and ends)
 beep() {
-    paplay /usr/share/sounds/KDE-Im-Irc-Event.ogg &
+	paplay /usr/share/sounds/KDE-Im-Irc-Event.ogg &
 }
 
-filename=`date +%Y-%m-%d_%H:%M:%S.gif`
+filename=$(date +%Y-%m-%d_%H:%M:%S.gif)
 
 # Duration and output file
 if [ $# -gt 0 ]; then
-    D="--duration=$@"
+	D="--duration=$@"
 else
-    notify-send "Default recording duration ${DURATION}s to /tmp/${filename}"
-    D="--duration=${DURATION} /tmp/${filename}"
+	notify-send "Default recording duration ${DURATION}s to /tmp/${filename}"
+	D="--duration=${DURATION} /tmp/${filename}"
 fi
 XWININFO=$(xwininfo)
-read X <<< $(awk -F: '/Absolute upper-left X/{print $2}' <<< "$XWININFO")
-read Y <<< $(awk -F: '/Absolute upper-left Y/{print $2}' <<< "$XWININFO")
-read W <<< $(awk -F: '/Width/{print $2}' <<< "$XWININFO")
-read H <<< $(awk -F: '/Height/{print $2}' <<< "$XWININFO")
+read X <<<$(awk -F: '/Absolute upper-left X/{print $2}' <<<"$XWININFO")
+read Y <<<$(awk -F: '/Absolute upper-left Y/{print $2}' <<<"$XWININFO")
+read W <<<$(awk -F: '/Width/{print $2}' <<<"$XWININFO")
+read H <<<$(awk -F: '/Height/{print $2}' <<<"$XWININFO")
 
 notify-send "Delaying $DELAY seconds. After that, byzanz will start recording"
-for (( i=$DELAY; i>0; --i )) ; do
-    notify-send "$i"
-    sleep 1
+for ((i = $DELAY; i > 0; --i)); do
+	notify-send "$i"
+	sleep 1
 done
 
 killall dunst
