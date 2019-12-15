@@ -213,7 +213,7 @@ bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 5%- && pkill -R
 bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle && pkill -RTMIN+1 i3blocks
 
 # Keybinding for locking screen
-bindsym $MOD+SHIFT+x exec i3lock -c 000000
+bindsym $MOD+SHIFT+x exec ~/.scripts/lock_screen_scrot.sh
 
 # Make the currently focused window a scratchpad
 bindsym $mod+Shift+minus move scratchpad
