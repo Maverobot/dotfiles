@@ -38,17 +38,17 @@ history = ctrl+period
 context = ctrl+shift+period
 
 [urgency_low]
-background = "#2f343f"
-foreground = "#d8dee8"
-timeout = 2
+    background = "#222222"
+    foreground = "#888888"
+    timeout = 10
 
 [urgency_normal]
-background = "#2f343f"
-foreground = "#d8dee8"
-timeout = 4
+    background = "#285577"
+    foreground = "#ffffff"
+    timeout = 10
 
 [urgency_critical]
-background = "#2f343f"
-foreground = "#d8dee8"
-frame_color = "#bf616a"
-timeout = 0
+    background = "#900000"
+    foreground = "#ffffff"
+    frame_color = "#ff0000"
+    timeout = 0
