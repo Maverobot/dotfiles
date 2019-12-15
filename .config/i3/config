@@ -221,7 +221,6 @@ bindsym $mod+Shift+minus move scratchpad
 # Show the first scratchpad window
 bindsym $mod+minus scratchpad show
 
-# TODO(qu_zh): following code only works at Ubuntu 16.04
 # Boot kitty as a special scratchpad, and bind it with $mod+F1
 exec --no-startup-id persistentapp kitty --class="kitty_scratch"
 for_window [class="kitty_scratch"] move scratchpad
