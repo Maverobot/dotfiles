@@ -1,0 +1,10 @@
+[Unit]
+Description=mount_onedrive
+Documentation=info:mount onedrive
+
+[Service]
+ExecStart=/usr/bin/rclone mount remote: %h/Documents/Onedrive/
+Restart=always
+
+[Install]
+WantedBy=default.target
