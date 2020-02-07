@@ -226,6 +226,8 @@ exec --no-startup-id persistentapp kitty --class="kitty_scratch"
 for_window [class="kitty_scratch"] move scratchpad
 bindsym $mod+F1 [class="kitty_scratch"] scratchpad show
 
+for_window [class="Yad"] floating enable
+
 # Show the sup-mail scratchpad window, if any.
 bindsym mod4+s [title="^Sup ::"] scratchpad show
 

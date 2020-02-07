@@ -101,7 +101,7 @@ sudo apt -qq update
 
 # Install i3wm dependencies
 echo ""
-sudo apt -qq install fish i3-gaps i3status i3blocks i3lock xautolock suckless-tools arandr dunst xclip mps-youtube zathura sxiv entr feh fonts-font-awesome w3m-img python3-pip scrot byzanz udiskie fcitx-googlepinyin
+sudo apt -qq install fish i3-gaps i3status i3blocks i3lock xautolock suckless-tools arandr dunst xclip mps-youtube zathura sxiv entr feh fonts-font-awesome w3m-img python3-pip scrot byzanz udiskie fcitx-googlepinyin yad xdotool
 echo ""
 pip3 install --user ranger-fm youtube-dl pygments gdbgui
 echo ""
