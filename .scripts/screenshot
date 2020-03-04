@@ -16,7 +16,7 @@ case $1 in
 	notify-send -t 3000 "Please select a window or rectangle for the screenshot."
 	;;
 *) # unknown option
-	echo "Usage: $0 [-f | --fullscreen] | [-a | --area] | [-w | --window]"
+	echo "Usage: $0 [-f | --fullscreen] | [-s | --select]"
 	exit 1
 	;;
 esac
