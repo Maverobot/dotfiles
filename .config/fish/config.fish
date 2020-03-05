@@ -35,6 +35,8 @@ if not functions -q fisher
     fish -c fisher
 end
 
+source /opt/ros/melodic/share/rosbash/rosfish
+bass source /opt/ros/melodic/setup.bash
 # For being compatible with anti-term in spacemacs
 function fish_title
     true
