@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
 SCROT=/usr/bin/scrot
 CONVERT=/usr/bin/convert
 COMPOSITE=/usr/bin/composite
