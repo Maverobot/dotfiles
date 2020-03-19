@@ -245,6 +245,9 @@ bindsym $mod+r         exec kitty ranger
 bindsym $mod+m         exec kitty $SHELL -c "export TERM=xterm-256color && emacsclient -t"
 bindsym $mod+Shift+m   exec "export TERM=xterm-256color && emacsclient -nc"
 
+# Bluetooth
+bindsym $mod+b exec --no-startup-id ~/.scripts/rofi-bluetooth/rofi-bluetooth
+
 # Clipboard
 bindsym $mod+Insert   exec --no-startup-id showclip
 
