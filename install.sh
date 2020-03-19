@@ -159,5 +159,3 @@ try_echo 'set -o vi' "${HOME}/.bashrc"
 try_echo "$(cat ~/.dotfiles/.config/.inputrc)" "${HOME}/.inputrc"
 # Allow cd into directory by merely typing the name
 try_echo 'shopt -s autocd' "${HOME}/.bashrc"
-# Add cd with history
-try_echo 'source ~/.dotfiles/.scripts/cd_history.sh' "${HOME}/.bashrc"
