@@ -25,9 +25,9 @@ alias audio-hdmi='pacmd set-card-profile 0 output:hdmi-stereo+input:analog-stere
 alias audio-laptop='pacmd set-card-profile 0 output:analog-stereo+input:analog-stereo'
 
 # cmake + make
-function mm
+function m
     if test -f ./CMakeLists.txt
-        mkdir -p build && cd build && cmake .. -DCMAKE_EXPORT_COMPILE_COMMANDS=ON && make
+        mkdir -p build && cd build && cmake .. -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=Release && make
     else if test -f ./Makefile
         make
     end
