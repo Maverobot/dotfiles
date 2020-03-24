@@ -22,6 +22,24 @@ abbr lg 'git log --all --decorate --oneline --graph'
 alias audio-hdmi='pacmd set-card-profile 0 output:hdmi-stereo+input:analog-stereo'
 alias audio-laptop='pacmd set-card-profile 0 output:analog-stereo+input:analog-stereo'
 
+# cmake + make
+function mm
+    if test -f ./CMakeLists.txt
+        mkdir -p build && cd build && cmake .. -DCMAKE_EXPORT_COMPILE_COMMANDS=ON && make
+    else if test -f ./Makefile
+        make
+    end
+end
+
+# Corona cli
+function coro
+    if set -q argv
+        curl -s "https://corona-stats.online/$argv[1]"
+    else
+        curl -s https://corona-stats.online/
+    end
+end
+
 # Define customized keybindings
 function fish_user_key_bindings
     bind --preset -M insert \ck up-or-search
