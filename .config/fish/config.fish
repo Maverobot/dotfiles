@@ -25,11 +25,23 @@ alias audio-hdmi='pacmd set-card-profile 0 output:hdmi-stereo+input:analog-stere
 alias audio-laptop='pacmd set-card-profile 0 output:analog-stereo+input:analog-stereo'
 
 # cmake + make
-function m
+function m --argument-names 'build_type'
+    if test -z $build_type
+        set build_type 'Release'
+    end
     if test -f ./CMakeLists.txt
-        mkdir -p build && cd build && cmake .. -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=Release && make
+        echo "mkdir -p build && cd build && cmake .. -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=$build_type && make"
+        mkdir -p build && cd build && cmake .. -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=$build_type && make
     else if test -f ./Makefile
-        make
+        if test -f ../CMakeLists.txt
+            echo "cmake .. -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=$build_type && make"
+            cmake .. -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=$build_type && make
+        else
+            make
+            echo "Failed to set CMAKE_BUILD_TYPE."
+        end
+    else
+        echo "No CMakeLists.txt or Makefile found."
     end
 end
 
