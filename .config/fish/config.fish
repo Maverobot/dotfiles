@@ -16,9 +16,11 @@ abbr q 'exit'
 abbr r 'ranger'
 abbr c 'fish_run_any_of chromium-browser google-chrome'
 abbr vi 'emacsclient -t'
+
 # "A Dog" = git log --all --decorate --oneline --graph
 abbr lg 'git log --all --decorate --oneline --graph'
-# Define aliases
+
+# Select audio output
 alias audio-hdmi='pacmd set-card-profile 0 output:hdmi-stereo+input:analog-stereo'
 alias audio-laptop='pacmd set-card-profile 0 output:analog-stereo+input:analog-stereo'
 
