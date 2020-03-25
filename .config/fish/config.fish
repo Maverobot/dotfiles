@@ -30,14 +30,14 @@ function m --argument-names 'build_type'
         set build_type 'Release'
     end
     if test -f ./CMakeLists.txt
-        echo "mkdir -p build && cd build && cmake .. -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=$build_type && make"
-        mkdir -p build && cd build && cmake .. -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=$build_type && make
+        echo "mkdir -p build && cd build && cmake .. -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=$build_type && make -j(nproc)"
+        mkdir -p build && cd build && cmake .. -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=$build_type && make -j(nproc)
     else if test -f ./Makefile
         if test -f ../CMakeLists.txt
-            echo "cmake .. -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=$build_type && make"
-            cmake .. -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=$build_type && make
+            echo "cmake .. -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=$build_type && make -j(nproc)"
+            cmake .. -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=$build_type && make -j(nproc)
         else
-            make
+            make -j(nproc)
             echo "Failed to set CMAKE_BUILD_TYPE."
         end
     else
