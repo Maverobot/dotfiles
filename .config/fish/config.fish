@@ -40,6 +40,9 @@ function m --argument-names 'build_type'
             make -j(nproc)
             echo "Failed to set CMAKE_BUILD_TYPE."
         end
+    else if test -f ../CMakeLists.txt
+        echo "cmake .. -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=$build_type && make -j(nproc)"
+        cmake .. -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=$build_type && make -j(nproc)
     else
         echo "No CMakeLists.txt or Makefile found."
     end
