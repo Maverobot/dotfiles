@@ -26,23 +26,25 @@ alias audio-laptop='pacmd set-card-profile 0 output:analog-stereo+input:analog-s
 
 # cmake + make
 function m --argument-names 'build_type'
+    function run_cmake_make
+        cmake .. -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=$build_type && make -j(nproc)
+        functions -e run_cmake_make
+    end
+
     if test -z $build_type
         set build_type 'Release'
     end
     if test -f ./CMakeLists.txt
-        echo "mkdir -p build && cd build && cmake .. -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=$build_type && make -j(nproc)"
-        mkdir -p build && cd build && cmake .. -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=$build_type && make -j(nproc)
+        mkdir -p build && cd build && run_cmake_make
     else if test -f ./Makefile
         if test -f ../CMakeLists.txt
-            echo "cmake .. -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=$build_type && make -j(nproc)"
-            cmake .. -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=$build_type && make -j(nproc)
+            run_cmake_make
         else
             make -j(nproc)
             echo "Failed to set CMAKE_BUILD_TYPE."
         end
     else if test -f ../CMakeLists.txt
-        echo "cmake .. -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=$build_type && make -j(nproc)"
-        cmake .. -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=$build_type && make -j(nproc)
+        cd .. && mkdir -p build && cd build && run_cmake_make
     else
         echo "No CMakeLists.txt or Makefile found."
     end
