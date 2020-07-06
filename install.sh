@@ -131,6 +131,7 @@ create_soft_link "${HOME}/.dotfiles/.config/ranger" "${HOME}/.config/ranger"
 create_soft_link "${HOME}/.dotfiles/.config/dunst" "${HOME}/.config/dunst"
 create_soft_link "${HOME}/.dotfiles/.config/kitty" "${HOME}/.config/kitty"
 create_soft_link "${HOME}/.dotfiles/.config/fish" "${HOME}/.config/fish"
+create_soft_link "${HOME}/.dotfiles/.config/rofi" "${HOME}/.config/rofi"
 create_soft_link "${HOME}/.dotfiles/.scripts" "${HOME}/.scripts"
 
 systemctl enable --user emacs
