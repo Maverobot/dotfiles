@@ -64,7 +64,7 @@ create_soft_link() {
 	fi
 	if [ ! -d "${dest}" ]; then
 		ln -sT "${src}" "${dest}"
-		echo -e "\nSoft link of ${src} has been created at ${dest}"
+		echo -e "Soft link of ${src} has been created at ${dest}"
 	elif is_same "${src}" "${dest}"; then
 		echo -e "A same ${dest} already exists. SKIP."
 	else
@@ -80,6 +80,13 @@ create_soft_link() {
 		"no") echo "${dest} is left untouched" ;;
 		esac
 	fi
+}
+
+install_soft_link() {
+	name=$1
+	src="${HOME}/.dotfiles/${name}"
+	dest="${HOME}/${name}"
+	create_soft_link "${src}" "${dest}"
 }
 
 # Download dotfiles from github
@@ -125,14 +132,14 @@ if [ ! -d "$(eval echo "${HOME}/.config")" ]; then
 	echo "Folder .config is created under ~/"
 fi
 
-create_soft_link "${HOME}/.dotfiles/.config/i3" "${HOME}/.config/i3"
-create_soft_link "${HOME}/.dotfiles/.config/systemd" "${HOME}/.config/systemd"
-create_soft_link "${HOME}/.dotfiles/.config/ranger" "${HOME}/.config/ranger"
-create_soft_link "${HOME}/.dotfiles/.config/dunst" "${HOME}/.config/dunst"
-create_soft_link "${HOME}/.dotfiles/.config/kitty" "${HOME}/.config/kitty"
-create_soft_link "${HOME}/.dotfiles/.config/fish" "${HOME}/.config/fish"
-create_soft_link "${HOME}/.dotfiles/.config/rofi" "${HOME}/.config/rofi"
-create_soft_link "${HOME}/.dotfiles/.scripts" "${HOME}/.scripts"
+install_soft_link ".config/i3"
+install_soft_link ".config/systemd"
+install_soft_link ".config/ranger"
+install_soft_link ".config/dunst"
+install_soft_link ".config/kitty"
+install_soft_link ".config/fish"
+install_soft_link ".config/rofi"
+install_soft_link ".scripts"
 
 systemctl enable --user emacs
 systemctl start --user emacs
