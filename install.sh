@@ -160,8 +160,6 @@ try_echo 'export PATH="$PATH:$HOME/.scripts"' "${HOME}/.profile"
 try_echo 'export PATH="$PATH:$HOME/.local/bin"' "${HOME}/.profile"
 # Add force 256 corlor
 try_echo 'export TERM=xterm-256color' "${HOME}/.bashrc"
-# Add term style
-try_echo 'export PS1="\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 5)\]\W\[$(tput setaf 1)\]]\[$(tput setaf 7)\]\\$ \[$(tput sgr0)\]"' "${HOME}/.bashrc"
 # Enable vim mode in bash and show insert/normal mode
 try_echo 'set -o vi' "${HOME}/.bashrc"
 try_echo "$(cat ~/.dotfiles/.config/.inputrc)" "${HOME}/.inputrc"
