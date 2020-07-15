@@ -89,18 +89,6 @@ install_soft_link() {
 	create_soft_link "${src}" "${dest}"
 }
 
-# Download dotfiles from github
-if [ ! -d "$(eval echo "${HOME}/.dotfiles")" ]; then
-	git clone https://github.com/Maverobot/dotfiles.git ~/.dotfiles
-	cd ~/.dotfiles || exit
-	git submodule update --init --recursive
-else
-	echo "The folder ~/.dotfiles already exists."
-	cd ~/.dotfiles || exit
-	git pull
-	git submodule update --init --recursive
-fi
-
 # Add PPAs
 add_ppa_unique kgilmer/speed-ricer
 add_ppa_unique fish-shell/release-3
@@ -130,6 +118,18 @@ wget -P ~ https://git.io/.gdbinit
 if [ ! -d "$(eval echo "${HOME}/.config")" ]; then
 	mkdir -p ~/.config
 	echo "Folder .config is created under ~/"
+fi
+
+# Download dotfiles from github
+if [ ! -d "$(eval echo "${HOME}/.dotfiles")" ]; then
+	git clone https://github.com/Maverobot/dotfiles.git ~/.dotfiles
+	cd ~/.dotfiles || exit
+	git submodule update --init --recursive
+else
+	echo "The folder ~/.dotfiles already exists."
+	cd ~/.dotfiles || exit
+	git pull
+	git submodule update --init --recursive
 fi
 
 install_soft_link ".config/i3"
