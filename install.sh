@@ -139,6 +139,7 @@ install_soft_link ".config/dunst"
 install_soft_link ".config/kitty"
 install_soft_link ".config/fish"
 install_soft_link ".config/rofi"
+install_soft_link ".config/udiskie"
 install_soft_link ".scripts"
 
 systemctl enable --user emacs
