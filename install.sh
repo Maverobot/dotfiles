@@ -111,6 +111,9 @@ if [ ! "$(command -v kitty)" ]; then
 	sudo update-alternatives --set x-terminal-emulator ~/.local/kitty.app/bin/kitty
 fi
 
+# Install fonts
+curl -L https://github.com/hbin/top-programming-fonts/raw/master/install.sh | bash
+
 # Install gdb-dashboard
 wget -P ~ https://git.io/.gdbinit
 

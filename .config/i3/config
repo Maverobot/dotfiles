@@ -177,7 +177,7 @@ client.background       #212121
 # finds out, if available)
 bar {
         status_command i3blocks -c ~/.config/i3/i3blocks.conf
-        font pango:monospace, Font Awesome 10
+        font pango:Monaco, Font Awesome 10
         strip_workspace_numbers no
         colors {
             background  #212121
