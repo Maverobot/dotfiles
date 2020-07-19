@@ -195,7 +195,7 @@ bar {
 exec --no-startup-id fcitx
 
 # Transparancy
-exec --no-startup-id compton
+exec --no-startup-id xcompmgr
 
 # Wallpaper
 exec --no-startup-id feh --bg-scale ~/.config/wall.png
