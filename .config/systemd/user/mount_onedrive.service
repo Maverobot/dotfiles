@@ -3,7 +3,7 @@ Description=mount_onedrive
 Documentation=info:mount onedrive
 
 [Service]
-ExecStart=/usr/bin/rclone mount remote: %h/Documents/Onedrive/
+ExecStart=/usr/bin/rclone mount remote: %h/Documents/Onedrive/ -vv --log-file /tmp/rclone.log
 Restart=always
 
 [Install]
