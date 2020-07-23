@@ -111,6 +111,9 @@ if [ ! "$(command -v kitty)" ]; then
 	sudo update-alternatives --set x-terminal-emulator ~/.local/kitty.app/bin/kitty
 fi
 
+# Install rclone
+curl https://rclone.org/install.sh | sudo bash
+
 # Install fonts
 curl -L https://github.com/hbin/top-programming-fonts/raw/master/install.sh | bash
 
