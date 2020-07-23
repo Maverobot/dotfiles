@@ -144,6 +144,7 @@ install_soft_link ".config/fish"
 install_soft_link ".config/rofi"
 install_soft_link ".config/udiskie"
 install_soft_link ".scripts"
+install_soft_link "org"
 
 systemctl enable --user emacs
 systemctl start --user emacs

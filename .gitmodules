@@ -4,3 +4,6 @@
 [submodule ".scripts/rofi-bluetooth"]
 	path = .scripts/rofi-bluetooth
 	url = https://github.com/Maverobot/rofi-bluetooth.git
+[submodule "org"]
+	path = org
+	url = https://github.com/Maverobot/org.git
