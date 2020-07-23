@@ -106,7 +106,7 @@ echo ""
 # Install kitty terminal emulator locally
 if [ ! "$(command -v kitty)" ]; then
 	curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
-	ln -sf ~/.local/kitty.app/bin/kitty ~/.local/bin/
+	ln -svf ~/.local/kitty.app/bin/kitty ~/.local/bin/
 	sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator ~/.local/kitty.app/bin/kitty 50
 	sudo update-alternatives --set x-terminal-emulator ~/.local/kitty.app/bin/kitty
 fi
