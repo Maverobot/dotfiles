@@ -112,7 +112,7 @@ if [ ! "$(command -v kitty)" ]; then
 fi
 
 # Install rclone
-curl https://rclone.org/install.sh | sudo bash
+curl https://rclone.org/install.sh | sudo bash || :
 
 # Install fonts
 curl -L https://github.com/hbin/top-programming-fonts/raw/master/install.sh | bash
