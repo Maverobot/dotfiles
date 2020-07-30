@@ -11,6 +11,7 @@ set fish_cursor_visual block
 set TERM xterm-256color
 
 # Define abbreviations
+abbr we 'weather'
 abbr l 'ls'
 abbr q 'exit'
 abbr r 'ranger'
@@ -57,6 +58,15 @@ function coro
         curl -s "https://corona-stats.online/$argv[1]"
     else
         curl -s https://corona-stats.online/
+    end
+end
+
+# Weather cli
+function weather
+    if count $argv >/dev/null
+        curl wttr.in/$argv[1]
+    else
+        curl wttr.in/augsburg
     end
 end
 
