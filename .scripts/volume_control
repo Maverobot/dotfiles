@@ -1,5 +1,29 @@
 #!/usr/bin/env bash
-# set -x
+set -x
+function help() {
+	echo "Usage: $0 +inc_num% | -dec_num% | abs_num%"
+}
+
+function is_absolute_volume() {
+	cmd=$1
+	echo "$cmd" | grep -E '^ *[0-9]+%' | grep -Eo '[0-9]+'
+}
+
+function get_absolute_value() {
+	val=$1
+	echo "$val" | grep -Eo '[0-9]+'
+}
+
+function is_relative_volume() {
+	cmd=$1
+	echo "$cmd" | grep -E '^ *(\-|\+)[0-9]+%'
+}
+
+function get_relative_value() {
+	val=$1
+	# Because bc cannot handle e.g. 1+(+1), only the negative sign is extracted.
+	echo "$val" | grep -Eo '\-*[0-9]+'
+}
 
 function get_volume() {
 	sink=$1
@@ -18,14 +42,27 @@ function get_sink_id() {
 # Parse arguments
 cmd=${1}
 if [ -z "$cmd" ]; then
-	echo "Usage: $0 +inc_num% | -dec_num% | abs_num%"
+	help
 	exit 1
 fi
 max_volume=${2:-120}
 
+# Calculate the target volume
 default_sink_id=$(get_sink_id "$(get_default_sink)")
-
-pactl set-sink-volume "${default_sink_id}" "${cmd}"
-if [[ $(get_volume "${default_sink_id}") -ge ${max_volume} ]]; then
-	pactl set-sink-volume "${default_sink_id}" "${max_volume}%"
+current_volume=$(get_volume "${default_sink_id}")
+target_volume=${current_volume}
+if [[ $(is_absolute_volume "$cmd") ]]; then
+	target_volume=$(get_absolute_value "$cmd")
+elif [[ $(is_relative_volume "$cmd") ]]; then
+	relative_volume=$(get_relative_value "$cmd")
+	target_volume=$(echo "$current_volume + $relative_volume" | bc -l)
+else
+	help
+	exit
 fi
+
+if [[ ${target_volume} -gt ${max_volume} ]]; then
+	target_volume=${max_volume}
+fi
+
+pactl set-sink-volume "${default_sink_id}" "${target_volume}%"
