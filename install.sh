@@ -85,7 +85,7 @@ create_soft_link() {
 install_soft_link() {
 	name=$1
 	src="${HOME}/.dotfiles/${name}"
-	dest="${HOME}/${name}"
+	dest="${2:-${HOME}/${name}}"
 	create_soft_link "${src}" "${dest}"
 }
 
@@ -147,7 +147,7 @@ install_soft_link ".config/fish"
 install_soft_link ".config/rofi"
 install_soft_link ".config/udiskie"
 install_soft_link ".scripts"
-install_soft_link "org"
+install_soft_link "org" "${HOME}/org/home"
 
 systemctl enable --user emacs
 systemctl start --user emacs
