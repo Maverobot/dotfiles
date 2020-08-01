@@ -7,3 +7,4 @@
 [submodule "org"]
 	path = org
 	url = https://github.com/Maverobot/org.git
+	branch = master
