@@ -12,6 +12,7 @@ set TERM xterm-256color
 
 # Define abbreviations
 abbr we 'weather'
+abbr t 'tldr'
 abbr l 'ls'
 abbr q 'exit'
 abbr r 'ranger'
