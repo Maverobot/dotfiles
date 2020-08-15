@@ -17,6 +17,7 @@ abbr q 'exit'
 abbr r 'ranger'
 abbr c 'fish_run_any_of chromium-browser google-chrome'
 abbr vi 'emacsclient -tc'
+abbr vi-x 'emacsclient -n'
 abbr apt-upgrade 'sudo apt update && sudo apt upgrade'
 
 # "A Dog" = git log --all --decorate --oneline --graph
