@@ -111,6 +111,9 @@ if [ ! "$(command -v kitty)" ]; then
 	sudo update-alternatives --set x-terminal-emulator ~/.local/kitty.app/bin/kitty
 fi
 
+# Install rust
+curl https://sh.rustup.rs -sSf | sh
+
 # Install rclone
 curl https://rclone.org/install.sh | sudo bash || :
 
