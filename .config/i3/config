@@ -165,9 +165,6 @@ client.background       #212121
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        mode hide
-        hidden_state hide
-        modifier Mod1
         status_command i3blocks -c ~/.config/i3/i3blocks.conf
         font pango:Monaco, Font Awesome 10
         strip_workspace_numbers no
