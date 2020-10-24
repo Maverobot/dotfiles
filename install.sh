@@ -90,13 +90,12 @@ install_soft_link() {
 }
 
 # Add PPAs
-add_ppa_unique kgilmer/speed-ricer
 add_ppa_unique fish-shell/release-3
 sudo apt -qq update
 
-# Install i3wm dependencies
-echo ""
-sudo apt -qq install git curl fish i3-gaps i3status i3blocks i3lock xautolock suckless-tools arandr dunst xclip mps-youtube zathura sxiv entr feh fonts-font-awesome w3m-img python3-pip scrot byzanz udiskie fcitx-googlepinyin yad xdotool neofetch python3-tk xcompmgr brightnessctl
+# Install dependencies
+echo "Install dependencies"
+sudo apt -qq install git curl fish i3lock xautolock suckless-tools arandr dunst xclip mps-youtube zathura sxiv entr feh fonts-font-awesome w3m-img python3-pip scrot byzanz udiskie fcitx-googlepinyin yad xdotool neofetch python3-tk picom brightnessctl libxcb-xinerama0-dev libxcb-icccm4-dev libxcb-randr0-dev libxcb-util0-dev libxcb-ewmh-dev libxcb-keysyms1-dev libxcb-shape0-dev
 echo ""
 pip3 install --user ranger-fm youtube-dl pygments gdbgui
 echo ""
@@ -111,6 +110,13 @@ if [ ! "$(command -v kitty)" ]; then
 	sudo update-alternatives --set x-terminal-emulator ~/.local/kitty.app/bin/kitty
 fi
 
+# Install bspwm and sxhkd
+(cd /tmp &&
+git clone https://github.com/baskerville/bspwm.git &&
+git clone https://github.com/baskerville/sxhkd.git &&
+cd bspwm && make && sudo make install &&
+cd ../sxhkd && make && sudo make install )
+
 # Install rust
 curl https://sh.rustup.rs -sSf | sh
 
@@ -120,7 +126,7 @@ curl https://rclone.org/install.sh | sudo bash || :
 # Install fonts
 curl -L https://github.com/hbin/top-programming-fonts/raw/master/install.sh | bash
 
-# #---Install i3wm config---# #
+# #---Install config---# #
 if [ ! -d "$(eval echo "${HOME}/.config")" ]; then
 	mkdir -p ~/.config
 	echo "Folder .config is created under ~/"
