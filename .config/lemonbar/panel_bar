@@ -112,10 +112,59 @@ while read -r line ; do
 						    wm="${wm}%{F${FG}}%{B${BG}}%{U${UL}}%{+u}%{A:bspc desktop -f ${name}:} ${name} %{A}%{B-}%{F-}%{-u}"
             fi
 						;;
-					[LTG]*)
-						# layout, state and flags
-						wm="${wm}%{F$COLOR_STATE_FG}%{B$COLOR_STATE_BG} ${name} %{B-}%{F-}"
-						;;
+
+		      L*)
+            # layout
+            layout='layout'
+						case $name in
+              M*)
+                layout='monocle'
+                ;;
+              T*)
+                layout='tiled'
+                ;;
+            esac
+						# wm="${wm}%{F$COLOR_STATE_FG}%{B$COLOR_STATE_BG} ${layout} %{B-}%{F-}"
+            ;;
+
+		      T*)
+            # state: tiled|pseudo_tiled|floating|fullscreen
+            state=$name
+						case $name in
+                T*)
+                  state='tiled'
+                  ;;
+                P*)
+                  state='pseudo_tiled'
+                  ;;
+                F*)
+                  state='floating'
+                  ;;
+                =*)
+                  state='fullscreen'
+                  ;;
+            esac
+						# wm="${wm}%{F$COLOR_STATE_FG}%{B$COLOR_STATE_BG} ${state} %{B-}%{F-}"
+            ;;
+		      G*)
+            # state: hidden|sticky|private|locked|marked|urgent
+            flag=$name
+					  case $name in
+              S*)
+                flag='sticky'
+                ;;
+              P*)
+                flag='private'
+                ;;
+              L*)
+                flag='locked'
+                ;;
+              M*)
+                flag='marked'
+                ;;
+            esac
+					  # wm="${wm}%{F$COLOR_STATE_FG}%{B$COLOR_STATE_BG} ${flag} %{B-}%{F-}"
+            ;;
 				esac
 				shift
 			done
