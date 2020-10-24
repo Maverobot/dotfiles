@@ -120,9 +120,6 @@ curl https://rclone.org/install.sh | sudo bash || :
 # Install fonts
 curl -L https://github.com/hbin/top-programming-fonts/raw/master/install.sh | bash
 
-# Install gdb-dashboard
-wget -P ~ https://git.io/.gdbinit
-
 # #---Install i3wm config---# #
 if [ ! -d "$(eval echo "${HOME}/.config")" ]; then
 	mkdir -p ~/.config
