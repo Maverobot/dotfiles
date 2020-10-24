@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+
+# Compositor
+picom &
+
+# bspwm settings
+bspc monitor -d {1..10}
+
+bspc config automatic_scheme longest_side
+bspc config initial_polarity second_child
+
+bspc config border_width         5
+bspc config window_gap          12
+
+bspc config split_ratio          0.5
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+
+# bspc rule -a Gimp desktop='^8' state=floating follow=on
+# bspc rule -a Google-chrome desktop='^10' focus=on
+# bspc rule -a mplayer2 state=floating
+# bspc rule -a Kupfer.py focus=on
+# bspc rule -a Screenkey manage=off
+
+show_lemonbar=$HOME/.config/lemonbar/panel
+pgrep -x "$show_lemonbar" > /dev/null || ${show_lemonbar} &
+
+# Scratchpad
+bspc rule -a kitty_scratch rectangle=1800x1400+0+0 center=on sticky=on state=floating hidden=on kitty --class=kitty_scratch &
+
+# Launch kitty as scratchpad
+pkill -f "persistentapp kitty --class=kitty_scratch"
+persistentapp kitty --class=kitty_scratch &
+
+# Set default window size for floating windows
+# bspc subscribe node_state | while read -a msg ; do
+#     echo $msg
+#     nid=${msg[3]}
+#     echo $nid
+#     bspc rule -a * $nid -o rectangle=1800x1400+0+0
+# done
+
+# Setup background
+feh --bg-fill ~/.config/feh/background.jpg
+
+# Keybinding daemon
+sxhkd &
+
+# Default cursor appearance is a left pointer
+xsetroot -cursor_name left_ptr &

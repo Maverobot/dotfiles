@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+PANEL_FIFO=/tmp/panel-fifo
+PANEL_HEIGHT=20
+PANEL_FONT="Monaco"
+PANEL_WM_NAME=lemon_panel
+export PANEL_FIFO PANEL_HEIGHT PANEL_FONT PANEL_WM_NAME

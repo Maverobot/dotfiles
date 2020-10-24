@@ -141,7 +141,9 @@ else
 	git submodule update --init --recursive
 fi
 
-install_soft_link ".config/i3"
+install_soft_link ".config/bspwm"
+install_soft_link ".config/sxhkd"
+install_soft_link ".config/lemonbar"
 install_soft_link ".config/systemd"
 install_soft_link ".config/ranger"
 install_soft_link ".config/dunst"
@@ -153,7 +155,14 @@ install_soft_link ".scripts"
 install_soft_link "org" "${HOME}/org/home"
 
 systemctl enable --user emacs
+systemctl enable --user auto_lock_screen
+systemctl enable --user sxhkd
+systemctl enable --user udiskie
+
 systemctl start --user emacs
+systemctl start --user auto_lock_screen
+systemctl start --user sxhkd
+systemctl start --user udiskie
 
 # Setup nmcli aliases
 try_echo "alias wifi='nmcli device wifi'" "${HOME}/.bash_aliases"
