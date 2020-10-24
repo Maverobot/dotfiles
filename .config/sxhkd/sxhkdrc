@@ -128,4 +128,36 @@ alt + shift + m
   export TERM=xterm-256color && emacsclient -nc
 
 alt + minus
-        scratchpad kitty_scratch
+  scratchpad kitty_scratch
+
+alt + r
+  kitty ranger
+
+alt + shift + x
+  ~/.scripts/lock_screen_scrot.sh
+
+# Bluetooth
+alt + shift + b
+  ~/.scripts/rofi-bluetooth/rofi-bluetooth
+
+# Clipboard
+# alt + Insert
+#   showclip
+
+# Screenshot
+Print
+  screenshot --fullscreen
+alt + shift + a
+  screenshot --select
+
+# media keys
+XF86AudioRaiseVolume
+  ~/.scripts/volume_control +5% 120 && pkill -RTMIN+1 i3blocks
+XF86AudioLowerVolume
+  ~/.scripts/volume_control -5% 120 && pkill -RTMIN+1 i3blocks
+XF86AudioMute
+  amixer -q -D pulse sset Master toggle && pkill -RTMIN+1 i3blocks
+XF86MonBrightnessUp
+  brightnessctl set +10%
+XF86MonBrightnessDown
+  brightnessctl set 10%-
