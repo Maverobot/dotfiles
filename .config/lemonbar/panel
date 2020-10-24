@@ -3,7 +3,7 @@
 current_window_name() {
     bspc subscribe node_focus | while read -a msg ; do
         printf "T" # Signature of title for the script panel_bar
-        xdotool getactivewindow getwindowname
+        ps -p $(xdotool getactivewindow getwindowpid) -o comm=
     done
 }
 
