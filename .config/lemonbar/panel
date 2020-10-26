@@ -1,9 +1,14 @@
 #!/usr/bin/env bash
 
 current_window_name() {
-    bspc subscribe node_focus | while read -a msg ; do
+    bspc subscribe node_focus desktop_focus | while read -a msg ; do
         printf "T" # Signature of title for the script panel_bar
-        ps -p $(xdotool getactivewindow getwindowpid) -o comm=
+        { pid=$(xdotool getactivewindow getwindowpid); } > /dev/null 2>&1
+        if [ -z ${pid} ] ; then
+            echo "" # Clears window name when no active window exists
+        else
+            echo $(ps -p ${pid} -o comm=)
+        fi
     done
 }
 
