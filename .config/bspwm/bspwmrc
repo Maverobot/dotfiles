@@ -41,7 +41,7 @@ persistentapp kitty --class=kitty_scratch &
 # done
 
 # Setup background
-feh --bg-fill ~/.config/feh/background.jpg
+feh --bg-fill ~/.config/wall.png
 
 # Keybinding daemon
 sxhkd &
