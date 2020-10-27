@@ -2,20 +2,20 @@
 
 current_window_name() {
     bspc subscribe node_focus desktop_focus | while read -a msg ; do
-        printf "T" # Signature of title for the script panel_bar
+        signature="T" # Signature of title for the script panel_bar
         { pid=$(xdotool getactivewindow getwindowpid); } > /dev/null 2>&1
         if [ -z ${pid} ] ; then
-            echo "" # Clears window name when no active window exists
+            echo "${signature}" # Clears window name when no active window exists
         else
-            echo $(ps -p ${pid} -o comm=)
+            echo "${signature}$(ps -p ${pid} -o comm=)"
         fi
     done
 }
 
 clock() {
     while true; do
-        printf "S"; # Signature of title for the script panel_bar
-        date "+%a %d.%m.%Y %H:%M:%S"; sleep 1;
+        signature="S" # Signature of title for the script panel_bar
+        echo "${signature}$(date "+%a %d.%m.%Y %H:%M:%S")" ; sleep 1;
     done
 }
 
