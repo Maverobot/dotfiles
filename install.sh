@@ -150,7 +150,12 @@ install_soft_link ".scripts"
 install_soft_link "org" "${HOME}/org/home"
 
 systemctl enable --user emacs
+systemctl enable --user auto_lock_screen
+systemctl enable --user udiskie
+
 systemctl start --user emacs
+systemctl start --user auto_lock_screen
+systemctl start --user udiskie
 
 # Setup nmcli aliases
 try_echo "alias wifi='nmcli device wifi'" "${HOME}/.bash_aliases"
