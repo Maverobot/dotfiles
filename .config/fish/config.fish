@@ -30,25 +30,29 @@ alias audio-laptop='pacmd set-card-profile 0 output:analog-stereo+input:analog-s
 
 # cmake + make
 function m --argument-names 'build_type'
-    function run_cmake_make
-        cmake .. -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=$build_type && make -j(nproc)
-        functions -e run_cmake_make
+    if type -q ninja
+        set use_ninja "-GNinja"
+    end
+
+    function run_cmake_build --inherit-variable use_ninja
+        cmake .. $use_ninja -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=$build_type && cmake --build . -- -j(nproc)
+        functions -e run_cmake_build
     end
 
     if test -z $build_type
         set build_type 'Release'
     end
     if test -f ./CMakeLists.txt
-        mkdir -p build && cd build && run_cmake_make
+        mkdir -p build && cd build && run_cmake_build
     else if test -f ./Makefile
         if test -f ../CMakeLists.txt
-            run_cmake_make
+            run_cmake_build
         else
-            make -j(nproc)
+            cmake --build . -- -j(nproc)
             echo "Failed to set CMAKE_BUILD_TYPE."
         end
     else if test -f ../CMakeLists.txt
-        cd .. && mkdir -p build && cd build && run_cmake_make
+        cd .. && mkdir -p build && cd build && run_cmake_build
     else
         echo "No CMakeLists.txt or Makefile found."
     end
