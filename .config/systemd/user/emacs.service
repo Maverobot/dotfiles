@@ -4,7 +4,7 @@ Documentation=info:emacs man:emacs(1) https://gnu.org/software/emacs/
 
 [Service]
 Type=simple
-ExecStart=/bin/bash -a -c 'source ~/.profile && exec /snap/bin/emacs --fg-daemon' 
+ExecStart=/bin/bash -a -c 'source ~/.profile && ~/.dotfiles/.scripts/emacs_with_dump.sh --fg-daemon'
 ExecStop=/snap/bin/emacsclient --eval "(kill-emacs)"
 Environment=SSH_AUTH_SOCK=%t/keyring/ssh
 Restart=on-failure
