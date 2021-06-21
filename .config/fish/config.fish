@@ -34,8 +34,10 @@ function m --argument-names 'build_type'
         set use_ninja "-GNinja"
     end
 
-    function run_cmake_build --inherit-variable use_ninja
-        cmake .. $use_ninja -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=$build_type && cmake --build . -- -j(nproc)
+    set num_cores (math (nproc)-2)
+
+    function run_cmake_build --inherit-variable use_ninja --inherit-variable num_cores
+        cmake .. $use_ninja -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=$build_type && cmake --build . -- -j$num_cores
         functions -e run_cmake_build
     end
 
@@ -48,7 +50,8 @@ function m --argument-names 'build_type'
         if test -f ../CMakeLists.txt
             run_cmake_build
         else
-            cmake --build . -- -j(nproc)
+            echo "pos 2"
+            cmake --build . -- -j$num_cores
             echo "Failed to set CMAKE_BUILD_TYPE."
         end
     else if test -f ../CMakeLists.txt
