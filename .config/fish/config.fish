@@ -95,6 +95,12 @@ if test -d /opt/ros/melodic
     bass source /opt/ros/melodic/setup.bash
 end
 
+# The one and only cheatsheet
+function cheat
+    curl cheat.sh/$argv
+end
+complete -c cheat -xa '(curl -s cheat.sh/:list)'
+
 # For being compatible with anti-term in spacemacs
 function fish_title
     true
