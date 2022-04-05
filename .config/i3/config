@@ -222,6 +222,12 @@ bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 5%+ && pkill -R
 bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 5%- && pkill -RTMIN+1 i3blocks
 bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle && pkill -RTMIN+1 i3blocks
 
+# Media player controls
+bindsym XF86AudioPlay exec "~/.scripts/media_buttons play-pause"
+bindsym XF86AudioStop exec "~/.scripts/media_buttons stop"
+bindsym XF86AudioPrev exec "~/.scripts/media_buttons previous"
+bindsym XF86AudioNext exec "~/.scripts/media_buttons next"
+
 # Keybinding for locking screen
 bindsym $MOD+SHIFT+x exec ~/.scripts/lock_screen_scrot.sh
 

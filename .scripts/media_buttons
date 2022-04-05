@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+if [ "$#" -ne 1 ]; then
+    echo "Playerctl operation must be passed (e.g. play)";
+    exit;
+fi
+
+if ! command -v playerctl &> /dev/null
+then
+    notify-send -u critical -t 5000 -- Warning "playerctl not found.\nInstall it with 'sudo apt install playerctl'."
+    exit
+fi
+
+#If Spotify is open only change that, otherwise all players
+if [[ $(ps -A | grep spotify) ]]; then
+    playerctl -p spotify $1;
+else
+    playerctl -a $1;
+fi
