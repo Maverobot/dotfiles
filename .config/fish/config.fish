@@ -17,8 +17,9 @@ abbr l 'ls'
 abbr q 'exit'
 abbr r 'ranger'
 abbr c 'fish_run_any_of chromium-browser google-chrome'
-abbr vi 'emacsclient -tc'
-abbr vi-x 'emacsclient -n'
+abbr vi 'emacsclient -tc' # opens file in a new frame
+abbr vi-f 'emacsclient -ac' # opens file in an existing frame and blocks
+abbr vi-x 'emacsclient -n' # opens file in an existing frame and does not block
 abbr apt-upgrade 'sudo apt update && sudo apt upgrade'
 
 # "A Dog" = git log --all --decorate --oneline --graph
