@@ -4,6 +4,7 @@ result=$(nmcli -t -f type,state,connection d | egrep "^(tun|tap):connected" | aw
 
 if [[ -z $result ]]; then
 	output=' N/A'
+	color="#FFFFFF"
 else
 	output=" $result"
 	color="#00FF00"
