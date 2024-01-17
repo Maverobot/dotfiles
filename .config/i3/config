@@ -84,7 +84,7 @@ bindsym $mod+p focus parent
 
 set $ws1 "1:Emacs"
 set $ws2 "2:Terminal"
-set $ws3 "3:Matlab"
+set $ws3 "3:Misc"
 set $ws4 "4:Reading"
 set $ws5 "5:Misc"
 set $ws6 "6:Misc"
