@@ -94,9 +94,10 @@ if not functions -q fisher
     curl -sL https://git.io/fisher | source
 end
 
-if test -d /opt/ros/melodic
-    source /opt/ros/melodic/share/rosbash/rosfish
-    bass source /opt/ros/melodic/setup.bash
+if test -d /opt/ros/noetic
+    source /opt/ros/noetic/share/rosbash/rosfish
+    bass source /opt/ros/noetic/setup.bash
+    export ROSCONSOLE_FORMAT='[${severity}] - ${node}: [${time}] ${message}'
 end
 
 # The one and only cheatsheet
