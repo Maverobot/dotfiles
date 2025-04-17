@@ -1,0 +1,26 @@
+configuration {
+	modi: "window,run,ssh";
+	font: "Ubuntu Mono derivative Powerline 16";
+	terminal: "i3-sensible-terminal";
+	combi-modi: "window,run";
+	matching: "fuzzy";
+	kb-remove-char-back: "BackSpace,Shift+BackSpace";
+	kb-remove-to-eol: "Control+Shift+e";
+	kb-accept-entry: "Control+m,Return,KP_Enter";
+	kb-mode-next: "Shift+Right,Control+l";
+	kb-mode-previous: "Shift+Left,Control+h";
+	kb-mode-complete: "Control+Shift+L";
+	kb-row-up: "Up,Control+k";
+	kb-row-down: "Down,Control+j";
+  timeout {
+      action: "kb-cancel";
+      delay:  0;
+  }
+  filebrowser {
+      directories-first: true;
+      sorting-method:    "name";
+  }
+}
+
+
+@theme "/usr/share/rofi/themes/arthur"
