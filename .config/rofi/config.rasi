@@ -12,14 +12,6 @@ configuration {
 	kb-mode-complete: "Control+Shift+L";
 	kb-row-up: "Up,Control+k";
 	kb-row-down: "Down,Control+j";
-  timeout {
-      action: "kb-cancel";
-      delay:  0;
-  }
-  filebrowser {
-      directories-first: true;
-      sorting-method:    "name";
-  }
 }
 
 
