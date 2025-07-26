@@ -89,14 +89,9 @@ install_soft_link() {
 	create_soft_link "${src}" "${dest}"
 }
 
-# Add PPAs
-add_ppa_unique kgilmer/speed-ricer
-add_ppa_unique fish-shell/release-3
-sudo apt -qq update
-
 # Install i3wm dependencies
 echo ""
-sudo apt -qq install git curl fish i3-gaps i3status i3blocks i3lock xautolock suckless-tools arandr dunst xclip mps-youtube zathura sxiv entr feh fonts-font-awesome w3m-img python3-pip scrot byzanz udiskie fcitx-googlepinyin yad xdotool neofetch python3-tk xcompmgr brightnessctl tmate playerctl
+sudo apt -qq install git curl fish fzf i3 i3status i3blocks i3lock xautolock suckless-tools arandr dunst xclip mps-youtube zathura sxiv entr feh fonts-font-awesome w3m-img python3-pip scrot byzanz udiskie fcitx-googlepinyin yad xdotool neofetch python3-tk xcompmgr brightnessctl tmate playerctl rofi
 echo ""
 pip3 install --user ranger-fm youtube-dl pygments gdbgui
 echo ""
