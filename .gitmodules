@@ -1,6 +1,6 @@
 [submodule ".scripts/i3blocks-contrib"]
 	path = .scripts/i3blocks-contrib
-	url = https://github.com/vivien/i3blocks-contrib.git
+	url = https://github.com/Maverobot/i3blocks-contrib.git
 [submodule ".scripts/rofi-bluetooth"]
 	path = .scripts/rofi-bluetooth
 	url = https://github.com/Maverobot/rofi-bluetooth.git
