@@ -256,7 +256,6 @@ bindsym $mod+r         exec kitty ranger
 bindsym $mod+m         exec kitty $SHELL -c "export TERM=xterm-256color && emacsclient -t"
 bindsym $mod+Shift+m   exec "export TERM=xterm-256color && emacsclient -nc"
 bindsym $mod+Shift+s   exec "export TERM=xterm-256color && emacsclient --eval '(emacs-everywhere)'"
-for_window [title="^Emacs Everywhere ::"] floating enable
 
 # Bluetooth
 bindsym $mod+b exec --no-startup-id ~/.scripts/rofi-bluetooth/rofi-bluetooth
