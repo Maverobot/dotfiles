@@ -121,13 +121,7 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
 # assign Workspaces:
-assign [class="Emacs"] $ws1
 for_window [class="Spotify"] move --no-auto-back-and-forth container to workspace $ws8
-assign [class="Microsoft Teams - Preview"] $ws9
-assign [class="MATLAB"] $ws3
-assign [class="Mendeley Reference Manager"] $ws4
-assign [class="firefox"] $ws10
-assign [class="Google-chrome"] $ws10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
