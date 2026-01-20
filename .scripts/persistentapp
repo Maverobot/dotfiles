@@ -1,52 +1,64 @@
 #!/usr/bin/env bash
 #
 ###################################################################
-#Description  : This script tries to restart the given program when
-#               it is closed
-#Args         : a command which needs to be persistent
-#Author       : Maverobot
+# Description : Restart a command if it exits, with safeguards
+# Args        : command (with arguments) to keep running
+# Author      : Maverobot
 ###################################################################
 
-STARTTIME=$(date +%s%N)
+set -o errexit
+set -o pipefail
+set -o nounset
+
+MIN_RUNTIME_MS=100
+
+usage() {
+    echo "Usage: $0 <command> [args...]"
+    exit 1
+}
 
 timer_start() {
-	STARTTIME=$(date +%s%N)
+    STARTTIME=$(date +%s%N)
 }
 
-timer_elapsedTime() {
-	local ENDTIME=$(date +%s%N)
-	echo $((($ENDTIME - $STARTTIME) / 1000000))
+timer_elapsed_ms() {
+    local endtime
+    endtime=$(date +%s%N)
+    echo $(( (endtime - STARTTIME) / 1000000 ))
 }
 
-if [ $# -lt 1 ]; then
-	echo "Usage: $0 <command with arguments>"
-	exit 1
+# Validate arguments
+if [[ $# -lt 1 ]]; then
+    usage
 fi
 
-# Gather all arguments and pack them into one string
-cmd=""
-while (($#)); do
-	cmd="$cmd $1"
-	shift
-done
+# Preserve command and arguments safely
+cmd=( "$@" )
 
-while [ 1 ]; do
-	echo -e "Execute command $cmd\n"
+echo "Monitoring command: ${cmd[*]}"
+echo "Minimum runtime before restart: ${MIN_RUNTIME_MS} ms"
 
-	timer_start
-	$cmd
-	elapsed_time=$(timer_elapsedTime)
-	if [ "$elapsed_time" -lt 1000 ]; then
-		echo -e "\nIt takes too short ($elapsed_time milliseconds ) to complete this task."
-		echo "To prevend misusage, $0 is exiting..."
-		exit
-	fi
+while true; do
+    echo
+    echo "Executing command: ${cmd[*]}"
 
-	ret=$?
-	if [ $ret -ne 0 ]; then
-		echo "Exiting..."
-		exit
-	fi
-	echo "Restart command $cmd"
+    timer_start
+    "${cmd[@]}"
+    ret=$?
 
+    elapsed_ms=$(timer_elapsed_ms)
+
+    if (( elapsed_ms < MIN_RUNTIME_MS )); then
+        echo "Command exited too quickly (${elapsed_ms} ms)."
+        echo "To prevent restart loops, exiting."
+        exit 1
+    fi
+
+    if (( ret != 0 )); then
+        echo "Command exited with non-zero status ($ret)."
+        echo "Exiting supervisor."
+        exit "$ret"
+    fi
+
+    echo "Command exited normally. Restarting..."
 done
