@@ -1,0 +1,10 @@
+[Unit]
+Description=Kitty Scratchpad Persistent Terminal
+
+[Service]
+ExecStart=/home/zheng/.local/kitty.app/bin/kitty --class="kittyscratch" --override initial_window_width=1000 --override initial_window_height=800
+Restart=always
+RestartSec=0.1
+
+[Install]
+WantedBy=default.target
