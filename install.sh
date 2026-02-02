@@ -91,9 +91,42 @@ install_soft_link() {
 
 # Install i3wm dependencies
 echo ""
-sudo apt -qq install git curl fish fzf i3 i3status i3blocks i3lock xautolock suckless-tools arandr dunst xclip mps-youtube zathura sxiv entr feh fonts-font-awesome w3m-img python3-pip scrot byzanz udiskie fcitx-googlepinyin yad xdotool neofetch python3-tk xcompmgr brightnessctl tmate playerctl rofi
-echo ""
-pip3 install --user ranger-fm youtube-dl pygments gdbgui
+sudo apt -qq install \
+     arandr \
+     brightnessctl \
+     byzanz \
+     curl \
+     dunst \
+     entr \
+     fcitx-googlepinyin \
+     feh \
+     fish \
+     fonts-font-awesome \
+     fzf \
+     git \
+     i3 \
+     i3blocks \
+     i3lock \
+     i3status \
+     neofetch \
+     playerctl \
+     python3-pip \
+     python3-tk \
+     rclone \
+     ranger \
+     rofi \
+     scrot \
+     suckless-tools \
+     sxiv \
+     tmate \
+     udiskie \
+     w3m-img \
+     xautolock \
+     xclip \
+     xcompmgr \
+     xdotool \
+     yad \
+     zathura \
 echo ""
 sudo snap install peco
 echo ""
@@ -108,9 +141,6 @@ fi
 
 # Install rust
 curl https://sh.rustup.rs -sSf | sh
-
-# Install rclone
-curl https://rclone.org/install.sh | sudo bash || :
 
 # Install fonts
 curl -L https://github.com/hbin/top-programming-fonts/raw/master/install.sh | bash
