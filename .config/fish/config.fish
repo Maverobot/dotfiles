@@ -98,9 +98,9 @@ if not functions -q fisher
     curl -sL https://git.io/fisher | source
 end
 
-if test -d /opt/ros/noetic
-    source /opt/ros/noetic/share/rosbash/rosfish
-    bass source /opt/ros/noetic/setup.bash
+if test -d /opt/ros/rolling
+    bass source /opt/ros/rolling/setup.bash
+    register-python-argcomplete --shell fish ros2 | source
     export ROSCONSOLE_FORMAT='[${severity}] - ${node}: [${time}] ${message}'
 end
 
