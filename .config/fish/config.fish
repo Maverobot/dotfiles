@@ -29,6 +29,10 @@ abbr lg 'git log --all --decorate --oneline --graph'
 alias audio-hdmi='pacmd set-card-profile 0 output:hdmi-stereo+input:analog-stereo'
 alias audio-laptop='pacmd set-card-profile 0 output:analog-stereo+input:analog-stereo'
 
+# ros2
+abbr cb 'colcon build --symlink-install --event-handlers console_direct+ --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON'
+abbr ze 'ros2 run rmw_zenoh_cpp rmw_zenohd'
+
 # cmake + make
 function m --argument-names 'build_type'
     if type -q ninja
